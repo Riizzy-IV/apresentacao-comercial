@@ -1,0 +1,170 @@
+/* ===== card do Enzo ===== */
+.card {
+  position: absolute;
+  left: 415px;
+  top: 50px;
+  width: 574px;
+  height: 948px;
+  overflow: hidden;
+}
+
+.photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photoShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 2.16%, rgba(0, 0, 0, 0.8));
+}
+
+.cardBody {
+  position: absolute;
+  left: 33px;
+  bottom: 47px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.nameBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 431px;
+}
+
+/* Figma: Proxima Nova Extra Wide (indisponível) → Zalando Sans Expanded */
+.name,
+.role {
+  margin: 0;
+  font-family: var(--font-expanded);
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}
+
+.name {
+  font-size: 45.5px;
+  font-weight: 700;
+  color: var(--color-orange);
+}
+
+.role {
+  font-size: 25px;
+  font-weight: 400;
+  color: #ededed;
+}
+
+.bar {
+  width: 78px;
+  height: 4px;
+  background: var(--color-orange);
+}
+
+.bio {
+  width: 488px;
+  font-size: 18px;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.bio p {
+  margin: 0;
+}
+
+.bio p + p {
+  margin-top: 1.3em;
+}
+
+/* ===== etapas ===== */
+.etapas {
+  position: absolute;
+  left: 1112px;
+  top: 133px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.title {
+  width: 560px;
+  height: 113px;
+  margin: 0;
+  font-family: var(--font-expanded);
+  font-size: 59px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--color-orange);
+  text-box: trim-both cap alphabetic;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.etapa {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+}
+
+.icon {
+  flex-shrink: 0;
+  display: block;
+}
+
+.iconBox {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-orange);
+  border-radius: 4px;
+  background: rgba(234, 131, 87, 0.2);
+}
+
+.etapaText {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.1;
+  color: #fff;
+  text-box: trim-both cap alphabetic;
+}
+
+/* aviso no canto direito */
+.tag {
+  position: absolute;
+  left: 1714px;
+  top: 133px;
+  width: 206px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-orange);
+  border-radius: 4px 0 0 4px;
+}
+
+.tag p {
+  width: 148px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.1;
+  color: #fff;
+  text-box: trim-both cap alphabetic;
+}

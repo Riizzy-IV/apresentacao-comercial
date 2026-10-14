@@ -1,0 +1,38 @@
+.text {
+  position: absolute;
+  left: 562px;
+  top: 254px;
+  width: 914px;
+  display: flex;
+  flex-direction: column;
+  gap: 29px;
+  font-weight: 700;
+}
+
+.eyebrow {
+  font-size: 24px;
+  line-height: 1.3;
+  color: var(--color-white);
+}
+
+.headline {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--color-orange);
+  text-box: trim-both cap alphabetic;
+}
+
+.gradientLine {
+  position: absolute;
+  left: 562px;
+  top: 567px;
+  width: 252px;
+  height: 18px;
+  background: linear-gradient(to right, var(--color-orange), var(--color-blue-light));
+}
+
+.logo {
+  position: absolute;
+}

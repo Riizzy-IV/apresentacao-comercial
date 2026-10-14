@@ -1,0 +1,19 @@
+.root {
+  position: absolute;
+  pointer-events: none;
+}
+
+.root img {
+  position: absolute;
+  inset: 0;
+}
+
+.sharp {
+  mask-image: linear-gradient(to bottom, #000 40%, transparent 60%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 60%);
+}
+
+.blur {
+  mask-image: linear-gradient(to bottom, transparent 40%, #000 60%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 40%, #000 60%);
+}

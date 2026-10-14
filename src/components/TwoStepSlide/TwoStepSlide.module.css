@@ -1,0 +1,80 @@
+/* área da tela (do tamanho do Canvas): recebe o toque que revela o próximo item */
+.root {
+  position: absolute;
+  inset: 0;
+}
+
+/* camada do bloco do título (do tamanho do Canvas) */
+.group {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.panel {
+  position: absolute;
+  left: 1102px;
+  top: 0;
+  width: 1818px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(18.1px);
+  -webkit-backdrop-filter: blur(18.1px);
+}
+
+.list {
+  position: absolute;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 41px;
+}
+
+.list li {
+  display: flex;
+  flex-direction: column;
+  gap: 41px;
+}
+
+.divider {
+  height: 1px;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.icon {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.icon img {
+  position: absolute;
+  inset: 0;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.itemTitle {
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-box: trim-both cap alphabetic;
+}
+
+.itemTitle em {
+  font-style: normal;
+  color: var(--color-orange);
+}
+
+.itemDesc {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.3;
+}

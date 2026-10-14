@@ -1,0 +1,125 @@
+.abs {
+  position: absolute;
+}
+
+.title {
+  position: absolute;
+  left: 404px;
+  top: 96px;
+  font-family: var(--font-expanded);
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-off-white);
+  text-box: trim-both cap alphabetic;
+}
+
+.lead {
+  position: absolute;
+  left: 404px;
+  top: 299px;
+  width: 435px;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.claim {
+  position: absolute;
+  left: 453px;
+  top: 339px;
+  width: 486px;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.powered {
+  position: absolute;
+  left: 416px;
+  top: 885px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* painel de vidro colado na borda direita — continua além do Canvas em telas largas */
+.panel {
+  position: absolute;
+  left: 1448px;
+  top: 245px;
+  width: 1472px;
+  height: 562px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5.55px);
+  -webkit-backdrop-filter: blur(5.55px);
+  border: 2px solid rgba(255, 97, 27, 0.5);
+  border-right: none;
+  border-radius: 16px 0 0 16px;
+}
+
+.panelHeader {
+  position: absolute;
+  left: 1491px;
+  top: 333px;
+  width: 379px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.project {
+  position: absolute;
+  left: 1491px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.projectLogo {
+  opacity: 0.6;
+  object-fit: cover;
+}
+
+.projectName {
+  font-size: 20px;
+}
+
+.projectStatus {
+  font-size: 40px;
+}
+
+/* unidades e VGV: linha menor abaixo do status */
+.projectInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.projectInfo b {
+  font-weight: 700;
+}
+
+.projectSep {
+  width: 5px;
+  height: 5px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.6);
+}

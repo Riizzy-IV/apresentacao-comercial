@@ -1,0 +1,44 @@
+.top,
+.bottom {
+  position: absolute;
+  font-size: 76.769px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--color-orange);
+  text-box: trim-both cap alphabetic;
+}
+
+.top {
+  left: 740px;
+  top: 279px;
+  width: 509.965px;
+}
+
+.bottom {
+  left: 820.88px;
+  top: 588.82px;
+  width: 625.118px;
+}
+
+.script {
+  position: absolute;
+  left: 761.93px;
+  top: 406.49px;
+  font-family: var(--font-script);
+  font-style: italic;
+  font-size: 191.922px;
+  font-weight: 400;
+  line-height: 1.1;
+  white-space: nowrap;
+  color: var(--color-off-white);
+}
+
+.line {
+  position: absolute;
+  left: 1116.99px;
+  top: 743.73px;
+  width: 248.128px;
+  height: 23.305px;
+  background: linear-gradient(to right, var(--color-orange), var(--color-blue-light));
+}

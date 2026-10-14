@@ -1,0 +1,103 @@
+.root {
+  position: absolute;
+  left: calc(50% + 0.5px);
+  top: 999px;
+  transform: translateX(-50%);
+  width: 1827px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  z-index: 10;
+}
+
+.line {
+  width: 1827px;
+  height: 1px;
+}
+
+/* setas nas pontas e abas dividindo a largura toda igualmente (Figma: gap 32) */
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.arrow {
+  flex-shrink: 0;
+  width: 54px;
+  height: 54px;
+  border-radius: 8px;
+  background: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.25s ease, transform 0.2s ease;
+}
+
+.arrow img {
+  /* compensa o desalinhamento do vetor dentro do frame 24x24 do Figma */
+  transform: translateX(-0.5px);
+}
+
+.arrowNext {
+  transform: rotate(180deg);
+}
+
+.arrow:active {
+  transform: scale(0.94);
+}
+
+.arrowNext:active {
+  transform: rotate(180deg) scale(0.94);
+}
+
+.arrow:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.btn {
+  flex: 1 0 0;
+  min-width: 0;
+  height: 54px;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.45px);
+  -webkit-backdrop-filter: blur(5.45px);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.active {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-white);
+}

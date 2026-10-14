@@ -1,0 +1,162 @@
+.root {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: linear-gradient(to bottom, var(--color-navy-800), var(--color-navy-900));
+}
+
+/* escurece a parte de baixo (a partir de 60%) — estendido para telas mais altas que 16:9 */
+.shade {
+  position: absolute;
+  left: -2000px;
+  right: -2000px;
+  top: 0;
+  height: 1081px;
+  background: linear-gradient(to bottom, transparent 60.4%, rgba(0, 0, 0, 0.5));
+  pointer-events: none;
+}
+
+.shade::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 2000px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.column {
+  position: absolute;
+  left: 679px;
+  top: -500px;
+  width: 563px;
+  height: 2080px;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.05) 50.96%, transparent);
+  backdrop-filter: blur(15.05px);
+  -webkit-backdrop-filter: blur(15.05px);
+}
+
+.band {
+  position: absolute;
+  left: -2000px;
+  top: 371px;
+  width: 5920px;
+  height: 237px;
+  background: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(34.8px);
+  -webkit-backdrop-filter: blur(34.8px);
+}
+
+/* linha diagonal pontilhada (Figma: 2058,79px girada 157,13° com centro em 991,5 x 476) */
+.diagonal {
+  position: absolute;
+  left: calc(991.5px - 1029.4px);
+  top: 475.5px;
+  max-width: none;
+  transform: rotate(157.13deg);
+  pointer-events: none;
+}
+
+/* linhas pontilhadas (traço 2, espaço 2) */
+.lineH {
+  position: absolute;
+  left: -2000px;
+  width: 5920px;
+  height: 1px;
+  background: repeating-linear-gradient(to right, #fff 0 2px, transparent 2px 4px);
+  opacity: 0.2;
+}
+
+.lineV {
+  position: absolute;
+  top: -256px;
+  width: 1px;
+  height: 1490px;
+  background: repeating-linear-gradient(to bottom, #fff 0 2px, transparent 2px 4px);
+  opacity: 0.2;
+  /* esmaece nas pontas, forte no meio */
+  mask-image: linear-gradient(to bottom, transparent, #000 50.5%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 50.5%, transparent);
+}
+
+.dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: var(--color-blue-light);
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* caixa da logo (escala a partir do centro dela) */
+.logoMove {
+  position: absolute;
+  left: calc(960.5px - 283.5px);
+  top: 370px;
+  width: 567px;
+  height: 238px;
+  transform-origin: 283.5px 119px;
+  pointer-events: none;
+}
+
+.logo {
+  display: block;
+}
+
+/* ===== passo 2: pilares ===== */
+.pilarNum {
+  position: absolute;
+  font-size: 160px;
+  font-weight: 800;
+  line-height: 1.1;
+  white-space: nowrap;
+  color: var(--color-orange);
+  text-box: trim-both cap alphabetic;
+}
+
+/* painel de vidro à direita (vai até a borda da janela em telas largas) */
+.panel {
+  position: absolute;
+  left: 1005px;
+  top: 0;
+  width: 1915px;
+  height: 999px;
+  background: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(8.45px);
+  -webkit-backdrop-filter: blur(8.45px);
+}
+
+.panelLineH {
+  position: absolute;
+  left: 1005px;
+  width: 1915px;
+  height: 1px;
+  background: repeating-linear-gradient(to right, #fff 0 2px, transparent 2px 4px);
+  opacity: 0.2;
+}
+
+.panelLineV {
+  position: absolute;
+  left: 1005px;
+  top: 112px;
+  width: 1px;
+  height: 915px;
+  background: repeating-linear-gradient(to bottom, #fff 0 2px, transparent 2px 4px);
+  opacity: 0.2;
+}
+
+.pilarLabel {
+  position: absolute;
+  left: 1077px;
+  font-size: 64px;
+  font-weight: 600;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}

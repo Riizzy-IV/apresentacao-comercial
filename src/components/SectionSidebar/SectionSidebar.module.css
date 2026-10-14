@@ -1,0 +1,161 @@
+.root {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 350px;
+  height: 998px;
+  z-index: 5;
+}
+
+/* fundo de vidro do painel; em telas mais largas que 16:9 continua até a borda
+   esquerda da janela (um único elemento, pois backdrop-filter aninhado não desfoca) */
+.root::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2350px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(8.45px);
+  -webkit-backdrop-filter: blur(8.45px);
+}
+
+.logo {
+  position: absolute;
+  left: 91px;
+  top: 38px;
+}
+
+.title {
+  position: absolute;
+  left: 46px;
+  top: 53px;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-orange);
+  text-box: trim-both cap alphabetic;
+}
+
+.line {
+  position: absolute;
+  left: -3px;
+  top: 130px;
+  width: 353px;
+  height: 1px;
+}
+
+/* grupos empilhados a partir de y=207; fechados ficam a 55px um do outro (Figma) */
+.groups {
+  position: absolute;
+  left: 46px;
+  top: 207px;
+  width: 234px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* grupo aberto: lista abaixo e 18px até o próximo grupo (26 − 8) */
+.groupBlockOpen {
+  margin-bottom: -8px;
+}
+
+.group {
+  width: 234px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.groupHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.groupLabel {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}
+
+.groupIcon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+/* aberto = seta para cima (ícone girado 180° no Figma) */
+.groupIconOpen {
+  transform: rotate(180deg);
+}
+
+/* linhas de 29px com o texto centralizado: o topo das letras do 1º item cai 46px abaixo
+   do título do grupo, como no Figma */
+.list {
+  margin-top: 8.8px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  animation: listIn 0.3s ease;
+}
+
+@keyframes listIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.item {
+  height: 29px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.1;
+  white-space: nowrap;
+  color: var(--color-white);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.item:hover {
+  color: var(--color-orange);
+}
+
+.item:active {
+  transform: translateX(3px);
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  flex-shrink: 0;
+  background: #2f79a8;
+}
+
+.itemActive {
+  margin: 5px 0 6px 20px;
+  padding: 0 16px;
+  border-radius: 4px;
+  background: var(--color-orange);
+  cursor: default;
+}
+
+.itemActive:hover {
+  color: var(--color-white);
+}
+
+.itemActive .dot {
+  background: var(--color-navy-800);
+}

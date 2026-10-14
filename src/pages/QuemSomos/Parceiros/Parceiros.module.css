@@ -1,0 +1,74 @@
+.kicker {
+  position: absolute;
+  left: 413px;
+  top: 53px;
+  width: 486px;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.big {
+  position: absolute;
+  left: 413px;
+  top: 109.6px;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-orange);
+  text-box: trim-both cap alphabetic;
+}
+
+.script {
+  position: absolute;
+  left: 468.14px;
+  top: 99px;
+  font-family: var(--font-script);
+  font-style: italic;
+  font-size: 140px;
+  font-weight: 400;
+  line-height: 1.1;
+  white-space: nowrap;
+  color: var(--color-off-white);
+}
+
+/* separadores pontilhados da grade (traço 2px, espaço 2px, como no Figma) */
+.lineV {
+  position: absolute;
+  top: 390px;
+  width: 1px;
+  height: 421px;
+  background: repeating-linear-gradient(to bottom, var(--color-blue-light) 0 2px, transparent 2px 4px);
+}
+
+.lineH {
+  position: absolute;
+  left: 387px;
+  top: 585px;
+  width: 1399px;
+  height: 1px;
+  background: repeating-linear-gradient(to right, var(--color-blue-light) 0 2px, transparent 2px 4px);
+}
+
+.logo {
+  position: absolute;
+  max-width: none;
+  object-fit: cover;
+}
+
+.count {
+  position: absolute;
+  left: 1375px;
+  top: 616px;
+  width: 331px;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.countNumber {
+  font-size: 90px;
+  color: var(--color-orange);
+}

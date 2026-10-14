@@ -1,0 +1,163 @@
+/* ===== cabeçalho ===== */
+.head {
+  position: absolute;
+  top: 64px;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  background: #afd2df;
+  color: #003556;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.headEtapa {
+  left: 401px;
+  width: 105px;
+  justify-content: center;
+}
+
+.headAtividade {
+  left: 508px;
+  width: 282px;
+  padding: 0 20px 0 30px;
+  justify-content: space-between;
+}
+
+.headMeses {
+  left: 793px;
+  width: 1034px;
+  padding: 0 7px;
+  gap: 18px;
+  text-transform: none;
+}
+
+.mes {
+  width: 97px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.mes p {
+  margin: 0;
+  text-align: center;
+}
+
+.semanas {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ===== etapas ===== */
+.stage {
+  position: absolute;
+  left: 401px;
+  width: 105px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #db4300;
+  color: #fff;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.stageName {
+  margin: 0;
+  font-size: 12px;
+}
+
+.stagePrazo {
+  margin: 0;
+  font-size: 10px;
+  opacity: 0.56;
+}
+
+.list {
+  position: absolute;
+  left: 509px;
+  width: 281px;
+  margin: 0;
+  padding: 4px 17px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.atividade {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 13px;
+}
+
+.atividadeNome {
+  width: 191px;
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 700;
+  color: #00243a;
+  white-space: nowrap;
+}
+
+.resp {
+  width: 53px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 13px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.cliente {
+  background: #afd2df;
+  color: #00243a;
+}
+
+.ambos {
+  background: #00243a;
+  color: #afd2df;
+}
+
+.balzani {
+  background: #ffaa87;
+  color: #db4300;
+}
+
+/* ===== gráfico ===== */
+.chart {
+  position: absolute;
+  left: 795px;
+  width: 1032px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.semana {
+  position: absolute;
+  width: 1px;
+  background: repeating-linear-gradient(to bottom, #00243a 0 2px, transparent 2px 4px);
+  pointer-events: none;
+}
+
+.bar {
+  position: absolute;
+  border-radius: 8px;
+  background: #4285f4;
+}

@@ -1,0 +1,83 @@
+.titleBlock {
+  position: absolute;
+  left: 464px;
+  top: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+/* Figma: Proxima Nova Extra Wide (indisponível) → Zalando Sans Expanded */
+.nome,
+.sub {
+  margin: 0;
+  font-family: var(--font-expanded);
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}
+
+.nome {
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--color-orange);
+}
+
+.sub {
+  font-size: 22px;
+  font-weight: 400;
+  color: #2f79a8;
+}
+
+/* item: card de vidro + marcador laranja na borda esquerda */
+.item {
+  position: absolute;
+  left: 454px;
+  width: 670px;
+  height: 186px;
+}
+
+.card {
+  position: absolute;
+  left: 16px;
+  top: 0;
+  width: 654px;
+  height: 186px;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(34.55px);
+  -webkit-backdrop-filter: blur(34.55px);
+}
+
+.texto {
+  position: absolute;
+  left: 30px;
+  top: 28px;
+  width: 566px;
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.tag {
+  position: absolute;
+  left: 30px;
+  top: 115px;
+  padding: 10px;
+  border-radius: 4px;
+  background: #2f79a8;
+  font-size: 16px;
+  line-height: 1.3;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.mark {
+  position: absolute;
+  left: 0;
+  top: 42px;
+  transform-origin: center;
+}

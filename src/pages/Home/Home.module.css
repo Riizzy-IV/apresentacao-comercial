@@ -1,0 +1,207 @@
+.root {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: linear-gradient(to bottom, var(--color-navy-800), var(--color-navy-900));
+  isolation: isolate;
+}
+
+/* export do Figma já com o blend "overlay" e os ajustes de cor aplicados */
+.waves {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* contorno da logo: no Figma tem blur progressivo (nítido no topo, desfocado embaixo),
+   reproduzido com a versão nítida e a desfocada sobrepostas com máscaras opostas */
+.outline {
+  position: absolute;
+  left: 803.1px;
+  top: -445.8px;
+  width: 1453.6px;
+  height: 1438.6px;
+  pointer-events: none;
+}
+
+.outline img {
+  position: absolute;
+  inset: 0;
+}
+
+.outlineSharp {
+  mask-image: linear-gradient(to bottom, #000 42%, transparent 58%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 42%, transparent 58%);
+}
+
+.outlineBlur {
+  mask-image: linear-gradient(to bottom, transparent 42%, #000 58%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 42%, #000 58%);
+}
+
+.logo {
+  position: absolute;
+  left: 1026px;
+  top: -23px;
+  width: 1036px;
+  height: 1036px;
+  mix-blend-mode: lighten;
+  pointer-events: none;
+}
+
+.bar {
+  position: absolute;
+  left: 140px;
+  top: 267px;
+  width: 188px;
+  height: 7px;
+  background: var(--color-orange);
+}
+
+.content {
+  position: absolute;
+  left: 138px;
+  top: 351px;
+  width: 970px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 54px;
+}
+
+.heading {
+  width: 970px;
+  height: 232px;
+  font-size: 80px;
+  font-weight: 400;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--color-white);
+  text-box: trim-both cap alphabetic;
+}
+
+.heading strong {
+  font-weight: 700;
+}
+
+.proof {
+  display: flex;
+  align-items: center;
+  gap: 35.435px;
+}
+
+.faces {
+  position: relative;
+  width: 223.517px;
+  height: 92.677px;
+  flex-shrink: 0;
+}
+
+/* o span recebe a animação de entrada (GSAP); o img recebe o hover,
+   assim um transform não sobrescreve o outro */
+.face {
+  position: absolute;
+  top: 0;
+  width: 92.677px;
+  height: 92.677px;
+  z-index: 1;
+  cursor: pointer;
+  transition: z-index 0s 0.35s;
+}
+
+.face:nth-child(1) { left: 0; }
+.face:nth-child(2) { left: 65.42px; }
+.face:nth-child(3) { left: 130.84px; }
+
+.face img {
+  width: 92.677px;
+  height: 92.677px;
+  border-radius: 50%;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    filter 0.35s ease;
+}
+
+/* ao passar o mouse no grupo, as logos se afastam e as não focadas apagam um pouco */
+.faces:hover .face:nth-child(1) img { transform: translateX(-10px); }
+.faces:hover .face:nth-child(3) img { transform: translateX(10px); }
+.faces:hover .face img { filter: brightness(0.7); }
+
+.face:hover,
+.face:active {
+  z-index: 3;
+  transition: z-index 0s;
+}
+
+.faces .face:hover img,
+.faces .face:active img {
+  filter: none;
+  box-shadow: 0 0 0 3px var(--color-orange), 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* balão com o nome do cliente — acompanha o deslocamento horizontal de cada logo */
+.tooltip {
+  --shift: 0px;
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 22px);
+  padding: 9px 16px;
+  border-radius: 8px;
+  background: var(--color-white);
+  color: var(--color-navy-800);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(calc(-50% + var(--shift)), 8px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  border: 7px solid transparent;
+  border-top-color: var(--color-white);
+  transform: translateX(-50%);
+}
+
+.face:nth-child(1) .tooltip { --shift: -10px; }
+.face:nth-child(3) .tooltip { --shift: 10px; }
+
+.face:hover .tooltip,
+.face:active .tooltip {
+  opacity: 1;
+  transform: translate(calc(-50% + var(--shift)), 0);
+}
+
+.faces .face:nth-child(1):hover img,
+.faces .face:nth-child(1):active img { transform: translate(-10px, -8px) scale(1.12); }
+.faces .face:nth-child(2):hover img,
+.faces .face:nth-child(2):active img { transform: translateY(-8px) scale(1.12); }
+.faces .face:nth-child(3):hover img,
+.faces .face:nth-child(3):active img { transform: translate(10px, -8px) scale(1.12); }
+
+.stat {
+  width: 248.048px;
+  font-size: 21.806px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--color-white);
+  text-box: trim-both cap alphabetic;
+}
+
+.statHighlight {
+  font-weight: 800;
+  color: var(--color-orange);
+}

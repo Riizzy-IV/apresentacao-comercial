@@ -1,0 +1,334 @@
+.title {
+  position: absolute;
+  left: 408px;
+  top: 35px;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-orange);
+  text-box: trim-both cap alphabetic;
+}
+
+/* abas no canto superior direito: cada uma abre para baixo com as subcategorias */
+.tab {
+  position: absolute;
+  top: 19px;
+  z-index: 10;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-white);
+  transition: background 0.25s ease;
+}
+
+.tab:not(.tabOpen):hover {
+  background: rgba(255, 97, 27, 0.15);
+}
+
+.tabActive,
+.tabActive:not(.tabOpen):hover {
+  background: var(--color-orange);
+}
+
+/* aberto: fundo escuro para ficar legível sobre os cards */
+.tabOpen {
+  z-index: 11;
+  background: rgba(2, 28, 45, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.tabHead {
+  height: 52px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.tabHead:active {
+  transform: scale(0.97);
+}
+
+/* aberto: rótulo apagado e sublinhado, como no Figma */
+.tabOpen .tabLabel {
+  opacity: 0.4;
+  padding-bottom: 6px;
+  margin-bottom: -6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.options {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 2px 15px 18px;
+  animation: dropIn 0.25s ease-out;
+}
+
+.options button {
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: var(--color-white);
+  transition: color 0.2s ease;
+}
+
+.options button:hover,
+.options .optionActive {
+  color: var(--color-orange);
+}
+
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.tabIcon {
+  flex-shrink: 0;
+}
+
+.empty {
+  position: absolute;
+  left: 350px;
+  right: 0;
+  top: 420px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+/* área de rolagem dos cards (Figma: 1477 x 780 em x=397, y=131) */
+.scroller {
+  position: absolute;
+  left: 397px;
+  top: 131px;
+  width: 1477px;
+  height: 780px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  touch-action: pan-x;
+  cursor: grab;
+}
+
+.scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.scroller:active {
+  cursor: grabbing;
+}
+
+.track {
+  position: relative;
+  height: 780px;
+}
+
+/* barra de rolagem personalizada */
+.scrollbar {
+  position: absolute;
+  left: 395px;
+  top: 939px;
+  width: 1353px;
+  height: 7px;
+  border-radius: 12px;
+  background: rgba(175, 210, 223, 0.2);
+}
+
+.scrollThumb {
+  height: 7px;
+  border-radius: 12px;
+  background: #afd2df;
+}
+
+/* card 435x379; posições internas medidas do canto externo no Figma, menos 1px da borda */
+.card {
+  position: absolute;
+  width: 435px;
+  height: 379px;
+  border-radius: 12px;
+  border: 1px solid var(--color-blue-light);
+  background: var(--color-navy-800);
+}
+
+.photo {
+  position: absolute;
+  left: 10px;
+  top: 9px;
+  width: 413px;
+  height: 221px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.photo > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tag {
+  position: absolute;
+  right: 10px;
+  bottom: 9px;
+  padding: 10px;
+  border-radius: 6px;
+  background: var(--color-blue-light);
+  font-size: 16px;
+  line-height: 1.1;
+  white-space: nowrap;
+  color: var(--color-off-white);
+  text-box: trim-both cap alphabetic;
+}
+
+/* selo "100% VENDIDO": sai da borda direita do card, sobre a foto */
+.seal {
+  position: absolute;
+  right: -1px;
+  top: 63px;
+  width: 131px;
+  height: 49px;
+  padding-right: 17px;
+  border-radius: 4px 0 0 4px;
+  background: var(--color-orange);
+  color: var(--color-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.seal strong {
+  font-size: 23.505px;
+  font-weight: 900;
+  text-box: trim-both cap alphabetic;
+}
+
+.seal span {
+  font-size: 14.748px;
+  font-weight: 700;
+  letter-spacing: -1.03px;
+  text-box: trim-both cap alphabetic;
+}
+
+.name,
+.qty,
+.value,
+.statusMain,
+.statusSub,
+.statusSimple {
+  position: absolute;
+  line-height: 1.1;
+  white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}
+
+.name {
+  left: 10px;
+  top: 248px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.local {
+  position: absolute;
+  left: 10px;
+  top: 273px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #afd2df;
+}
+
+/* ícone em caixa de 24px, como no Figma */
+.local img {
+  margin: 0 3.3px;
+}
+
+.line {
+  position: absolute;
+  left: 11px;
+  top: 307px;
+}
+
+.qty {
+  left: 10px;
+  top: 319px;
+  font-size: 24px;
+}
+
+.value {
+  left: 10px;
+  top: 344px;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-orange);
+}
+
+.statusMain {
+  right: 10px;
+  top: 330px;
+  font-size: 24px;
+}
+
+.statusSub {
+  right: 10px;
+  top: 355px;
+  font-size: 16px;
+  color: var(--color-blue-light);
+}
+
+.statusSub b {
+  font-weight: 700;
+}
+
+.statusMain {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* status simples: 1 linha em y=336; 2 linhas começam em y=330 (Figma) */
+.statusSimpleRow {
+  position: absolute;
+  right: 10px;
+  top: 336px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.statusSimpleTwoLines {
+  top: 330px;
+}
+
+.statusSimple {
+  position: static;
+  font-size: 18px;
+  text-align: right;
+}
+
+/* seta para cima (ícone 24px com 21,5px de desenho) */
+.alta {
+  margin: 0 1.25px;
+}

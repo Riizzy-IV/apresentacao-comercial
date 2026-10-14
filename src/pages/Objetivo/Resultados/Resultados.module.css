@@ -1,0 +1,36 @@
+.big {
+  position: absolute;
+  left: 432px;
+  top: 636px;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-orange);
+  text-box: trim-both cap alphabetic;
+}
+
+/* aqui o Figma usa o corte de altura das maiúsculas também no texto cursivo */
+.script {
+  position: absolute;
+  left: 598px;
+  top: 665px;
+  font-family: var(--font-script);
+  font-style: italic;
+  font-size: 140px;
+  font-weight: 400;
+  line-height: 1.1;
+  white-space: nowrap;
+  color: var(--color-off-white);
+  text-box: trim-both cap alphabetic;
+}
+
+.line {
+  position: absolute;
+  left: 601px;
+  top: 778px;
+  width: 321px;
+  height: 18px;
+  background: linear-gradient(to right, var(--color-orange), var(--color-blue-light));
+}

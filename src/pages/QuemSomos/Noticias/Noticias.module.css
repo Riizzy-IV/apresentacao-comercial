@@ -1,0 +1,81 @@
+.abs {
+  position: absolute;
+  max-width: none;
+}
+
+/* logo de veículo no canto superior direito: cabe em 260x90, centralizada em (1464.7, 152) */
+.brandLogo {
+  position: absolute;
+  left: calc(1464.7px - 130px);
+  top: calc(152px - 45px);
+  width: 260px;
+  height: 90px;
+  object-fit: contain;
+}
+
+.title {
+  position: absolute;
+  left: 438px;
+  top: 116px;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-orange);
+  text-box: trim-both cap alphabetic;
+}
+
+.script {
+  position: absolute;
+  left: 503px;
+  top: 132px;
+  font-family: var(--font-script);
+  font-style: italic;
+  font-size: 140px;
+  font-weight: 400;
+  line-height: 1.1;
+  white-space: nowrap;
+  color: var(--color-off-white);
+}
+
+.shot {
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.shadow {
+  box-shadow: 0 17.484px 69.938px rgba(0, 0, 0, 0.25);
+}
+
+/* camada do tamanho do Canvas: agrupa balão + aspas para animarem juntos */
+.layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.card {
+  position: absolute;
+  width: 291.117px;
+  padding: 0 8.742px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card p {
+  width: 233.418px;
+  font-size: 20.981px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.cardCenter p {
+  text-align: center;
+}
+
+.aspas {
+  transform: rotate(180deg);
+}

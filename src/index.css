@@ -1,0 +1,63 @@
+/* fonte cursiva dos nomes (Figma: "Swarsh Daisy" Italic) */
+@font-face {
+  font-family: 'Swarsh Daisy';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/SwarshDaisy-Italic.woff2') format('woff2');
+}
+
+:root {
+  --font-script: 'Swarsh Daisy', Georgia, serif;
+  --font-expanded: 'Zalando Sans Expanded', 'Red Hat Display', sans-serif;
+  --color-blue-light: #2f79a8;
+  --color-off-white: #ededed;
+  --color-navy-900: #021c2d;
+  --color-navy-800: #00243a;
+  --color-secondary: #003556;
+  --color-orange: #ff611b;
+  --color-white: #ffffff;
+  --font-main: 'Red Hat Display', 'Helvetica Neue', Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+  outline: none;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--color-navy-900);
+  font-family: var(--font-main);
+  color: var(--color-white);
+  overscroll-behavior: none;
+}
+
+img {
+  display: block;
+  -webkit-user-drag: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  color: inherit;
+  touch-action: manipulation;
+}
+
+video::-webkit-media-controls-fullscreen-button {
+  display: none;
+}

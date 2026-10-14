@@ -1,0 +1,64 @@
+.root {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: linear-gradient(to bottom, var(--color-navy-800), var(--color-navy-900));
+}
+
+/* escurecimento da esquerda (preto sólido até metade, some até x=677);
+   começa 2000px antes para cobrir a sobra do palco em telas largas */
+.shade {
+  position: absolute;
+  left: -2000px;
+  top: -500px;
+  width: 2677px;
+  height: 2080px;
+  background: linear-gradient(to right, #040404 calc(2000px + 338.5px), rgba(4, 4, 4, 0) 100%);
+  pointer-events: none;
+}
+
+.kicker {
+  position: absolute;
+  left: 82.86px;
+  top: 271.08px;
+  width: 486px;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.title {
+  position: absolute;
+  left: 82.86px;
+  top: 345.69px;
+  width: 655.681px;
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--color-orange);
+  text-box: trim-both cap alphabetic;
+}
+
+.script {
+  position: absolute;
+  left: 319px;
+  top: 542px;
+  font-family: var(--font-script);
+  font-style: italic;
+  font-size: 160px;
+  font-weight: 400;
+  line-height: 1.1;
+  white-space: nowrap;
+  color: var(--color-off-white);
+}
+
+.body {
+  position: absolute;
+  left: 457px;
+  top: 694px;
+  width: 435px;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.3;
+}

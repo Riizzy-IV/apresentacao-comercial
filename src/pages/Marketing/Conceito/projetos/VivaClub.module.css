@@ -1,0 +1,283 @@
+/* página do brandbook: 1479px de largura, rola dentro do painel branco */
+.page {
+  position: relative;
+  width: 1479px;
+  height: 10472px;
+  overflow: hidden;
+  background: #fff;
+  font-family: 'Figtree', var(--font-main);
+  color: #0a3655;
+}
+
+.page p {
+  margin: 0;
+}
+
+.abs {
+  position: absolute;
+  max-width: none;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+/* Figma: Menda (indisponível) → mesma fonte expandida da apresentação */
+.menda {
+  font-family: var(--font-expanded);
+}
+
+/* ---- hero ---- */
+.hero {
+  left: 0;
+  top: 0.2px;
+  width: 1479px;
+  height: 569.339px;
+  background: linear-gradient(213.97deg, #fff 44.26%, #f0c9a6 103.32%, #f39448 154.17%, #dc5f26 214.86%);
+}
+
+.heroSub {
+  font-size: 24.65px;
+  line-height: normal;
+}
+
+.heroSub b {
+  color: #dc5f26;
+}
+
+.marca {
+  font-size: 12.325px;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.heroTitle {
+  font-family: var(--font-expanded);
+  font-size: 36.975px;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.heroTitle b {
+  color: #dc5f26;
+}
+
+/* ---- textos ---- */
+.texto {
+  font-size: 18.487px;
+}
+
+.textoMenor {
+  font-size: 15.406px;
+  line-height: 1.4;
+}
+
+.conceito {
+  line-height: 1.8;
+}
+
+.conceito p + p {
+  margin-top: 30.81px;
+}
+
+.conceito b {
+  color: #dc5f26;
+}
+
+.topico {
+  display: flex;
+  align-items: center;
+  gap: 14.636px;
+}
+
+.topico p {
+  width: 836.873px;
+  font-size: 30.813px;
+  font-weight: 700;
+  line-height: 1.8;
+  color: #103655;
+  text-transform: uppercase;
+}
+
+.secao {
+  font-size: 24.65px;
+  font-weight: 700;
+  line-height: 1.8;
+  color: #dc5f26;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}
+
+.bloco {
+  width: 1010.65px;
+  display: flex;
+  flex-direction: column;
+  gap: 24.65px;
+}
+
+.desafios {
+  display: flex;
+  gap: 50.07px;
+  align-items: flex-start;
+}
+
+.desafio {
+  display: flex;
+  flex-direction: column;
+  gap: 8.473px;
+}
+
+/* ---- paleta ---- */
+.cor {
+  border-radius: 12.184px;
+}
+
+.corNome {
+  font-size: 21.931px;
+  font-weight: 500;
+  line-height: 1.32;
+  letter-spacing: -0.4386px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.corSpecs {
+  display: flex;
+  flex-direction: column;
+  gap: 6.092px;
+  font-size: 14.621px;
+  font-weight: 500;
+  line-height: 1.32;
+  letter-spacing: -0.2924px;
+  color: #fff;
+  text-align: right;
+}
+
+/* ---- frase + logotipo ---- */
+.linhaV {
+  position: absolute;
+  left: 0;
+  top: 0;
+  max-width: none;
+  transform-origin: 0 0;
+  transform: rotate(90deg);
+}
+
+.frase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 33.123px;
+}
+
+.frase p {
+  font-size: 43.138px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #0e83d9;
+  text-align: center;
+}
+
+.mockup {
+  width: 1236.486px;
+  height: 695.523px;
+  border-radius: 15.406px;
+  object-fit: cover;
+  box-shadow: 0 46.219px 92.438px rgba(0, 0, 0, 0.25);
+}
+
+.versao {
+  width: 358.195px;
+  height: 200.281px;
+  border-radius: 15.406px;
+}
+
+.legenda {
+  width: 1009.982px;
+  font-size: 18.487px;
+  line-height: 1.3;
+  color: #bababa;
+  text-align: center;
+}
+
+/* ---- tipografia ---- */
+.pill {
+  padding: 7.703px 46.219px;
+  border: 0.77px solid #c5c5c5;
+  border-radius: 58.544px;
+  font-size: 21.569px;
+  line-height: 1.8;
+  color: #bababa;
+  white-space: nowrap;
+}
+
+.familia {
+  font-size: 123.25px;
+  font-weight: 700;
+  line-height: 1.8;
+  color: #103655;
+  white-space: nowrap;
+}
+
+.descricao {
+  font-size: 18.487px;
+  line-height: 1.3;
+  color: #bababa;
+}
+
+.peso {
+  font-size: 30.813px;
+  line-height: 1.8;
+  color: #bababa;
+  white-space: nowrap;
+}
+
+.aa {
+  width: 120.939px;
+  overflow: hidden;
+  border-right: 0.77px solid #0e83d9;
+}
+
+.aa p {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 123.25px;
+  line-height: 1.8;
+  color: #0e83d9;
+  white-space: nowrap;
+}
+
+.alfabeto {
+  width: 120.939px;
+  font-size: 18.487px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #bababa;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+/* ---- aplicações ---- */
+.foto {
+  border-radius: 15.406px;
+  object-fit: cover;
+}
+
+.recorte {
+  border-radius: 15.406px;
+  overflow: hidden;
+}
+
+.recorte img {
+  position: absolute;
+  max-width: none;
+}
+
+.obrigado {
+  font-size: 49.3px;
+  line-height: 1.2;
+  color: #fff;
+  white-space: nowrap;
+}

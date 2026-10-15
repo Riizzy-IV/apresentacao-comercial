@@ -1,0 +1,131 @@
+.linhaTopo {
+  position: absolute;
+  left: 351px;
+  top: 73px;
+  max-width: none;
+  pointer-events: none;
+}
+
+.abas {
+  position: absolute;
+  left: 375px;
+  top: 21px;
+  display: flex;
+  gap: 10px;
+}
+
+.aba {
+  padding: 10px;
+  border: 1px solid #ededed;
+  border-radius: 4px;
+  background: transparent;
+  color: #ededed;
+  font-size: 18px;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.aba:hover,
+.abaAtiva {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+}
+
+.abaAtiva {
+  color: var(--color-navy-800);
+}
+
+/* Figma: Proxima Nova Extra Wide Medium (indisponível) → Zalando Sans Expanded */
+.titulo {
+  position: absolute;
+  left: 395px;
+  top: 127px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-family: var(--font-expanded);
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.nome {
+  margin: 0;
+  font-size: 30px;
+  color: var(--color-orange);
+}
+
+.cliente {
+  margin: 0;
+  font-size: 15px;
+  color: #afd2df;
+  opacity: 0.56;
+}
+
+/* painel branco: o brandbook rola por dentro (sem barra de rolagem visível) */
+.painel {
+  position: absolute;
+  left: 391px;
+  top: 187px;
+  width: 1479px;
+  height: 769px;
+  border-radius: 16px;
+  background: #fff;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  scrollbar-width: none;
+}
+
+.painel::-webkit-scrollbar {
+  display: none;
+}
+
+.emBreve {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #0a3655;
+  opacity: 0.4;
+}
+
+/* setas laterais: círculo de vidro do Figma (o desfoque do SVG não funciona em <img>, fica no botão) */
+.seta {
+  position: absolute;
+  top: 545px;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  backdrop-filter: blur(10.2px);
+  -webkit-backdrop-filter: blur(10.2px);
+  transition: transform 0.2s;
+}
+
+.seta:active {
+  transform: scale(0.94);
+}
+
+.circulo {
+  position: absolute;
+  inset: 0;
+}
+
+.chevron {
+  position: relative;
+  margin-right: 2px;
+}
+
+.setaProxima .chevron {
+  margin: 0 0 0 2px;
+  transform: rotate(180deg);
+}

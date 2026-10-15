@@ -34,7 +34,17 @@ const FORMULA_GROUPS = [
       { route: '/estrategia/entregaveis', label: 'Entregáveis' },
     ],
   },
-  { label: 'Marketing',  items: [] },
+  {
+    label: 'Marketing',
+    logo: '/img/formula/logo-sidebar.svg',
+    items: [
+      { route: '/marketing',             label: 'Marketing', intro: true }, // abertura com os 3 cards, fora do menu
+      { route: '/marketing/conceito',    label: 'Conceito',     // texto → projetos (brandbooks) → entregáveis
+        steps: ['/marketing/conceito/projetos', '/marketing/conceito/entregaveis'] },
+      { route: '/marketing/enxoval',     label: 'Enxoval' },
+      { route: '/marketing/performance', label: 'Performance' },
+    ],
+  },
   { label: 'Comercial',  items: [] },
 ];
 

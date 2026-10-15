@@ -30,6 +30,32 @@
   color: #2f79a8;
 }
 
+/* foto à direita, com degradê laranja no canto inferior direito (fica atrás do card) */
+.photo {
+  position: absolute;
+  left: 930px;
+  top: 220px;
+  width: 879px;
+  height: 631px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145.06deg, rgba(255, 97, 27, 0) 43.49%, #ff611b 124.4%);
+  pointer-events: none;
+}
+
 /* item: card de vidro + marcador laranja na borda esquerda */
 .item {
   position: absolute;

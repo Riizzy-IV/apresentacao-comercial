@@ -25,6 +25,8 @@ import Atuacao from './pages/Estrategia/Atuacao/Atuacao';
 import Cronograma from './pages/Estrategia/Cronograma/Cronograma.jsx';
 import Cases from './pages/Estrategia/Cases/Cases';
 import Entregaveis from './pages/Estrategia/Entregaveis/Entregaveis';
+import Marketing from './pages/Marketing/Marketing';
+import Conceito from './pages/Marketing/Conceito/Conceito';
 import EmBreve from './pages/EmBreve/EmBreve';
 
 export default function App() {
@@ -69,6 +71,13 @@ export default function App() {
             <Route path="cronograma" element={<Cronograma />} />
             <Route path="cases" element={<Cases />} />
             <Route path="entregaveis" element={<Entregaveis />} />
+            <Route path="*" element={<EmBreve embedded />} />
+          </Route>
+
+          <Route path="/marketing" element={<SectionLayout route="/formula" />}>
+            <Route index element={<Marketing />} />
+            {/* "/*" mantém a mesma instância no passo …/projetos */}
+            <Route path="conceito/*" element={<Conceito />} />
             <Route path="*" element={<EmBreve embedded />} />
           </Route>
 

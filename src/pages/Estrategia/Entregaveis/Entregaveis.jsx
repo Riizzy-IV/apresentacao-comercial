@@ -18,6 +18,7 @@ export default function Entregaveis() {
         .from('[data-anim="bg"]',    { opacity: 0, duration: 1.4, ease: 'power2.out' }, 0)
         .from('[data-anim="chips"]', { opacity: 0, duration: 0.6 }, 0.3)
         .from('[data-anim="title"]', { opacity: 0, y: 20, duration: 0.7, stagger: 0.1 }, 0.2)
+        .from('[data-anim="photo"]', { opacity: 0, x: 40, duration: 1 }, 0.35)
         .from('[data-anim="card"]',  { opacity: 0, x: -30, duration: 0.8 }, 0.6)
         .from('[data-anim="mark"]',  { scaleY: 0, duration: 0.5 }, 0.9);
     }, rootRef);
@@ -32,6 +33,10 @@ export default function Entregaveis() {
       <div className={styles.titleBlock}>
         <p className={styles.nome} data-anim="title">Entregáveis</p>
         <p className={styles.sub} data-anim="title">Estratégia</p>
+      </div>
+
+      <div className={styles.photo} data-anim="photo">
+        <img src="/img/estrategia/entregaveis-enzo.png" alt="Enzo Mirizzi" draggable={false} />
       </div>
 
       {ENTREGAVEIS.map((e, i) => (

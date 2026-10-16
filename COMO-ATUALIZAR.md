@@ -11,7 +11,7 @@ segundo plano e instala ao ser fechado. Na próxima abertura, o vendedor já vê
 | `npm run dev` | Desenvolvimento no navegador (como sempre) |
 | `npm run app` | Abre a apresentação no app, para testar |
 | `npm run dist` | Gera o instalador **sem publicar** |
-| `npm run release` | Sobe a versão (1.0.0 → 1.0.1…), gera o instalador e **publica a atualização** |
+| `npm run release` | Sobe a versão (1.0.1 → 1.0.2…), cria o commit e a etiqueta da versão, envia para o GitHub, gera o instalador e **publica a atualização** |
 
 O instalador é gerado em `%LOCALAPPDATA%\balzani-release` (fora da Área de Trabalho, porque a
 proteção do Windows bloqueia o empacotador dentro dela).
@@ -26,8 +26,9 @@ O `npm run release` precisa de um token do GitHub para publicar:
 ## Para publicar uma atualização
 
 1. Faça as mudanças e confira com `npm run dev` ou `npm run app`.
-2. Rode `npm run release`.
-3. Faça commit (o `package.json` muda de versão) e push.
+2. Faça commit das mudanças (o `npm run release` não roda com alterações sem commit).
+3. Rode `npm run release`. Ele mesmo cria o commit "Versão x.y.z", a etiqueta `vx.y.z` e envia
+   para o GitHub antes de publicar (o GitHub exige a etiqueta para criar a Release).
 
 ## Instalação nos PCs dos vendedores (só na primeira vez)
 

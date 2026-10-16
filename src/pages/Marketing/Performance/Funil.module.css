@@ -1,0 +1,115 @@
+/* Figma: Proxima Nova Extra Wide (indisponível) → Zalando Sans Expanded */
+.title,
+.incorporador,
+.nome,
+.valor,
+.vendas {
+  margin: 0;
+  font-family: var(--font-expanded);
+  line-height: 1.1;
+  white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}
+
+/* uma palavra por linha, cada linha recortada na altura das maiúsculas (passo de ~67px do Figma) */
+.title {
+  position: absolute;
+  left: 516px;
+  top: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.44em;
+  font-size: 59px;
+  font-weight: 700;
+  color: var(--color-orange);
+  text-transform: uppercase;
+  text-box: none;
+}
+
+.title span {
+  text-box: trim-both cap alphabetic;
+}
+
+.incorporador {
+  position: absolute;
+  left: 1117px;
+  top: 131px;
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--color-orange);
+  text-transform: uppercase;
+}
+
+/* camadas SVG do funil: posição = caixa do Figma + recuo do vetor dentro dela */
+.trianguloExterno,
+.grade,
+.trianguloInterno {
+  position: absolute;
+  max-width: none;
+  pointer-events: none;
+}
+
+.trianguloExterno { left: 984.9px;  top: 201px; }
+.grade            { left: 941px;    top: 130.07px; }
+.trianguloInterno { left: 1048.8px; top: 322px; }
+
+/* coluna das etapas, centralizada sobre o funil */
+.coluna {
+  position: absolute;
+  left: 969px;
+  top: 201px;
+  width: 774px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* linha de 864px (mais larga que a coluna), 2px acima do topo, sem ocupar altura */
+.linhaTopo {
+  flex: none;
+  max-width: none;
+  margin: -2px 0 0;
+}
+
+.etapa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.nome {
+  font-size: 22px;
+  color: var(--color-orange);
+}
+
+.valor {
+  width: 119px;
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 12px;
+  font-size: 22px;
+  color: #fff;
+  text-align: center;
+}
+
+/* conector: SVG de 35px de altura ocupando os 27px do Figma (sobra 4px em cima e embaixo) */
+.conector {
+  flex: none;
+  max-width: none;
+  margin: -4px 0;
+}
+
+.vendas {
+  padding: 15px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.13);
+  backdrop-filter: blur(13.15px);
+  -webkit-backdrop-filter: blur(13.15px);
+  font-size: 37px;
+  font-weight: 700;
+  color: var(--color-orange);
+  text-transform: uppercase;
+}

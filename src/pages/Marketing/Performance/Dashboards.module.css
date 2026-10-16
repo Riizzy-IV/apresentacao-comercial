@@ -1,0 +1,21 @@
+/* ajustes sobre o carrossel de projetos (Figma "Tela 17"). Classe repetida (.x.x) para vencer
+   as regras padrão de Projetos.module.css qualquer que seja a ordem do CSS no bundle. */
+.painel.painel {
+  left: 395px;
+  top: 195px;
+  height: 756px;
+  background: transparent;
+}
+
+/* título maior e em negrito; Figma: Proxima Nova Extra Wide Bold 40px → Zalando Sans Expanded */
+.nome.nome {
+  font-size: 37px;
+  font-weight: 700;
+  text-box: trim-both cap alphabetic;
+}
+
+.print {
+  display: block;
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,82 @@
+/* foto com degradê azul vindo da esquerda (fica atrás do título) */
+.foto {
+  position: absolute;
+  left: 861px;
+  top: 249px;
+  width: 1013px;
+  height: 480px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.foto::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to left, rgba(0, 53, 86, 0), #003556 81.688%);
+  pointer-events: none;
+}
+
+/* Figma: Proxima Nova Extra Wide Bold 64px (indisponível) → Zalando Sans Expanded */
+.title {
+  position: absolute;
+  left: 456px;
+  top: 351px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.39em; /* passo entre linhas = entrelinha 1.1 do Figma */
+  font-family: var(--font-expanded);
+  font-size: 59px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-orange);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.title span {
+  text-box: trim-both cap alphabetic;
+}
+
+.faixa {
+  position: absolute;
+  left: 463px;
+  top: 633px;
+  max-width: none;
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.house {
+  position: absolute;
+  left: 1143px;
+  top: 604px;
+  white-space: nowrap;
+}
+
+.houseTitulo,
+.houseTexto {
+  margin: 0;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.houseTitulo {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-orange);
+  text-box: trim-start cap alphabetic;
+}
+
+.houseTexto {
+  font-size: 24px;
+  text-box: trim-end cap alphabetic;
+}

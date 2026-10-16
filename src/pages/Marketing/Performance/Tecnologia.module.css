@@ -1,0 +1,98 @@
+/* Figma: Proxima Nova Extra Wide (indisponível) → Zalando Sans Expanded */
+.tag {
+  position: absolute;
+  left: 499px;
+  top: 260px;
+  padding: 10px;
+  border-radius: 4px;
+  background: var(--color-orange);
+  font-family: var(--font-expanded);
+  font-size: 16px;
+  line-height: 1.1;
+  color: #fff;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}
+
+.title {
+  position: absolute;
+  left: 499px;
+  top: 321px;
+  width: 764px;
+  margin: 0;
+  font-family: var(--font-expanded);
+  font-size: 59px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-orange);
+  text-transform: uppercase;
+  text-box: trim-both cap alphabetic;
+}
+
+.texto {
+  position: absolute;
+  left: 502px;
+  top: 540px;
+  width: 697px;
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.3;
+  color: #fff;
+  text-box: trim-both cap alphabetic;
+}
+
+.texto strong {
+  font-weight: 700;
+  color: var(--color-orange);
+}
+
+.chips {
+  position: absolute;
+  left: 502px;
+  top: 642px;
+  width: 549px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 10px 26px;
+  border: 1px solid #afd2df;
+  border-radius: 8px;
+  background: #afd2df;
+  font-size: 16px;
+  line-height: 1.3;
+  color: #003556;
+  white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}
+
+.chipMais {
+  background: transparent;
+  color: #afd2df;
+}
+
+/* card do logo: centraliza a imagem dentro da caixa colorida */
+.logo {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.logo img {
+  display: block;
+  flex: none;
+  object-fit: cover;
+}
+
+/* Figma: rotate(180deg) + scaleY(-1) = espelhado na horizontal */
+.espelhado {
+  transform: scaleX(-1);
+}

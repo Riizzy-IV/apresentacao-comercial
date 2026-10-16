@@ -1,0 +1,82 @@
+/* foto da equipe com um leve degradê laranja no canto inferior */
+.foto {
+  position: absolute;
+  left: 425px;
+  top: 46px;
+  width: 1449px;
+  height: 558px;
+  overflow: hidden;
+}
+
+.foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.foto::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(169.25deg, rgba(255, 97, 27, 0) 0%, rgba(255, 97, 27, 0.38) 128.54%);
+  pointer-events: none;
+}
+
+.card {
+  position: absolute;
+  left: 1222px;
+  top: 514px;
+  width: 484px;
+  height: 297px;
+  border-radius: 16px;
+  background: linear-gradient(to right, var(--color-orange), #2f79a8);
+}
+
+.barra {
+  position: absolute;
+  left: 1257px;
+  top: 604px;
+  width: 418px;
+  height: 12px;
+  background: #fff;
+  transform-origin: left center;
+}
+
+.texto {
+  position: absolute;
+  left: 1269px;
+  top: 697px;
+  width: 416px;
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.1;
+  color: #fff;
+  text-box: trim-both cap alphabetic;
+}
+
+/* Figma: Proxima Nova Extra Wide Bold 64px (indisponível) → Zalando Sans Expanded */
+.title {
+  position: absolute;
+  left: 430px;
+  top: 698px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.39em; /* passo entre linhas = entrelinha 1.1 do Figma */
+  font-family: var(--font-expanded);
+  font-size: 59px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-orange);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.title span {
+  text-box: trim-both cap alphabetic;
+}
+
+.title .claro {
+  color: #ededed;
+}

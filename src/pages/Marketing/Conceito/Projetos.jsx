@@ -12,21 +12,22 @@ const PROJETOS = [
   { nome: 'Léman View',           Conteudo: null },
   { nome: 'VivaClub', cliente: 'Luiz Targa Engenharia', Conteudo: VivaClub },
 ];
-const INICIAL = PROJETOS.findIndex(p => p.Conteudo); // abre no primeiro projeto com layout
-
 /**
  * Marketing · Conceito, passo 2 (Figma "Tela 11"): abas com os projetos e, para cada um,
  * o brandbook num painel branco com rolagem. As setas laterais trocam de projeto.
+ * Também usado no Enxoval e na Performance (`projetos` = outra lista; `classes` = ajustes de
+ * estilo por tela, somados às classes padrão: `painel`, `nome`, `cliente`).
  */
-export default function Projetos() {
-  const [atual, setAtual] = useState(INICIAL);
+export default function Projetos({ projetos = PROJETOS, classes = {} }) {
+  // abre no primeiro projeto com layout
+  const [atual, setAtual] = useState(() => Math.max(0, projetos.findIndex(p => p.Conteudo)));
   const rootRef = useRef(null);
   const contentRef = useRef(null);
   const painelRef = useRef(null);
   const first = useRef(true);
-  const { nome, cliente, Conteudo } = PROJETOS[atual];
+  const { nome, cliente, Conteudo } = projetos[atual];
 
-  const ir = delta => setAtual(i => (i + delta + PROJETOS.length) % PROJETOS.length);
+  const ir = delta => setAtual(i => (i + delta + projetos.length) % projetos.length);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -55,8 +56,8 @@ export default function Projetos() {
       <img src="/img/estrategia/linha-topo.svg" alt="" width="1569" height="2" className={styles.linhaTopo} />
 
       <nav className={styles.abas}>
-        {PROJETOS.map((p, i) => (
-          <button key={p.nome} className={`${styles.aba} ${i === atual ? styles.abaAtiva : ''}`}
+        {projetos.map((p, i) => (
+          <button key={i} className={`${styles.aba} ${i === atual ? styles.abaAtiva : ''}`}
             onClick={() => setAtual(i)} data-anim="aba">
             {p.nome}
           </button>
@@ -65,11 +66,11 @@ export default function Projetos() {
 
       <div ref={contentRef} key={atual}>
         <div className={styles.titulo} data-anim="titulo">
-          <p className={styles.nome}>{nome}</p>
-          {cliente && <p className={styles.cliente}>{cliente}</p>}
+          <p className={`${styles.nome} ${classes.nome ?? ''}`}>{nome}</p>
+          {cliente && <p className={`${styles.cliente} ${classes.cliente ?? ''}`}>{cliente}</p>}
         </div>
 
-        <div ref={painelRef} className={styles.painel} data-anim="painel">
+        <div ref={painelRef} className={`${styles.painel} ${classes.painel ?? ''}`} data-anim="painel">
           {Conteudo ? <Conteudo /> : <p className={styles.emBreve}>Projeto em breve</p>}
         </div>
       </div>

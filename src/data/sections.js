@@ -41,11 +41,29 @@ const FORMULA_GROUPS = [
       { route: '/marketing',             label: 'Marketing', intro: true }, // abertura com os 3 cards, fora do menu
       { route: '/marketing/conceito',    label: 'Conceito',     // texto → projetos (brandbooks) → entregáveis
         steps: ['/marketing/conceito/projetos', '/marketing/conceito/entregaveis'] },
-      { route: '/marketing/enxoval',     label: 'Enxoval' },
-      { route: '/marketing/performance', label: 'Performance' },
+      { route: '/marketing/enxoval',     label: 'Enxoval',      // texto → projetos (landing pages) → entregáveis
+        steps: ['/marketing/enxoval/projetos', '/marketing/enxoval/entregaveis'] },
+      { route: '/marketing/performance', label: 'Performance',  // pilares → experiência → criativo → criativo bonito → vídeo conceito → AIDA → tecnologia → criativos → dados → dashboards → funil → entregáveis
+        steps: ['experiencia', 'criativo', 'criativo-bonito', 'video-conceito', 'aida', 'tecnologia', 'criativos', 'dados',
+                'dashboards', 'funil', 'entregaveis'].map(p => `/marketing/performance/${p}`) },
     ],
   },
-  { label: 'Comercial',  items: [] },
+  {
+    label: 'Comercial',
+    logo: '/img/formula/logo-sidebar.svg',
+    items: [
+      { route: '/comercial',                      label: 'A importância' },
+      { route: '/comercial/frentes-da-venda',     label: 'Frentes da venda' },
+      { route: '/comercial/estrutura-ideal',      label: 'Estrutura ideal' },
+      { route: '/comercial/o-maior-desafio',      label: 'O maior desafio' },
+      { route: '/comercial/assessoria-comercial', label: 'Assessoria comercial' },
+      { route: '/comercial/roadmap',              label: 'Roadmap' },
+      { route: '/comercial/cases',                label: 'Cases' },
+      { route: '/comercial/operacao-pre-vendas',  label: 'Operação pré-vendas' },
+      { route: '/comercial/onde-agiriamos',       label: 'Onde agiríamos' },
+      { route: '/encerramento',                   label: 'Encerramento', intro: true }, // slide final, tela cheia, fora do menu
+    ],
+  },
 ];
 
 export const SECTIONS = [

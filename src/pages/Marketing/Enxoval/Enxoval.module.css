@@ -1,0 +1,21 @@
+/* painel do passo "projetos": a landing page do projeto rola por dentro (Figma "Tela 14").
+   Classe repetida (.x.x) para vencer as regras padrão de Projetos.module.css qualquer que seja
+   a ordem do CSS no bundle. */
+.painel.painel {
+  left: 395px;
+  top: 192px;
+  height: 761px;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.cliente.cliente {
+  color: #2f79a8;
+}
+
+.print {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}

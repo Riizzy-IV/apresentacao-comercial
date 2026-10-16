@@ -13,8 +13,11 @@ const PILARES = [
   { nome: 'Experiência do Cliente', texto: <>O comportamento, o entendimento,<br />a cultura e a entrega real do produto ou serviço.</> },
 ];
 
-/** Passo 1 (Figma "Tela 42"): texto + quatro pilares, foto à direita. */
-function Intro() {
+/**
+ * Texto + quatro pilares, foto à direita. Usado no passo 1 do Conceito (Figma "Tela 42")
+ * e na abertura do Enxoval (Figma "Tela 51").
+ */
+export function PilaresIntro({ titulo, foto }) {
   const rootRef = useRef(null);
 
   useEffect(() => {
@@ -33,7 +36,7 @@ function Intro() {
     <div ref={rootRef}>
       <img src="/img/estrategia/linha-topo.svg" alt="" width="1569" height="2" className={styles.linhaTopo} />
 
-      <h1 className={styles.title} data-anim="title">Conceito</h1>
+      <h1 className={styles.title} data-anim="title">{titulo}</h1>
 
       <div className={styles.content}>
         <p className={styles.intro} data-anim="intro">
@@ -57,11 +60,13 @@ function Intro() {
       </div>
 
       <div className={styles.photo} data-anim="photo">
-        <img src="/img/marketing/conceito.jpg" alt="" draggable={false} />
+        <img src={foto} alt="" draggable={false} />
       </div>
     </div>
   );
 }
+
+const Intro = () => <PilaresIntro titulo="Conceito" foto="/img/marketing/conceito.jpg" />;
 
 /**
  * Marketing · Conceito em passos (sem fade entre eles, cada passo anima a própria entrada):

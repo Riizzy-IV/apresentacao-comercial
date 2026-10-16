@@ -73,6 +73,11 @@
   white-space: nowrap;
 }
 
+/* complemento menor numa 2ª linha do item, ex.: "(20 estáticas / 10 vídeos)" */
+.item small {
+  font-size: 24px;
+}
+
 /* seta laranja apontando para a direita (SVG aponta para baixo) */
 .marcador {
   flex: none;

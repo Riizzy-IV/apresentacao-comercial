@@ -1,0 +1,108 @@
+/* frase | linha vertical | números, centralizados em y = 424 (Figma: top 50% − 116px) */
+.conteudo {
+  position: absolute;
+  left: 442px;
+  top: 424px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 76px;
+}
+
+/* Figma: Proxima Nova Extra Wide Bold 64px (indisponível) → Zalando Sans Expanded */
+.title,
+.valor {
+  margin: 0;
+  font-family: var(--font-expanded);
+  font-size: 59px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-box: trim-both cap alphabetic;
+}
+
+.title {
+  width: 616px;
+  flex: none;
+  color: var(--color-orange);
+}
+
+.title span {
+  color: #ededed;
+}
+
+/* linha pontilhada vertical (SVG horizontal de 486px girado) */
+.linha {
+  flex: none;
+  width: 0;
+  height: 486px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.linha img {
+  flex: none;
+  max-width: none;
+  transform: rotate(-90deg);
+}
+
+.numeros {
+  width: 637px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.numero {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.valor {
+  color: #afd2df;
+  white-space: nowrap;
+}
+
+.texto {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.1;
+  color: #fff;
+  text-box: trim-both cap alphabetic;
+}
+
+.linhaRodape {
+  position: absolute;
+  left: 351px;
+  top: 901px;
+  max-width: none;
+  pointer-events: none;
+}
+
+.rodape {
+  position: absolute;
+  left: 442px;
+  top: 865px;
+  width: 1132px;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #2f79a8;
+  border-radius: 24px;
+  background: #00243a;
+}
+
+.rodape p {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+  white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}

@@ -1,0 +1,33 @@
+/* Figma: Proxima Nova Extra Wide Bold 101px (indisponível) → Zalando Sans Expanded */
+.frase {
+  position: absolute;
+  left: 477px;
+  top: 349px;
+  width: 1114px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-expanded);
+  font-size: 93px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-orange);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* cada linha recortada na altura das maiúsculas, como no Figma */
+.frase span {
+  display: block;
+  text-box: trim-both cap alphabetic;
+}
+
+/* espaço entre as linhas recortadas: reproduz o passo de ~112px entre linhas do Figma */
+.frase span + span {
+  margin-top: 0.5em;
+}
+
+.frase em {
+  font-style: normal;
+  color: #ededed;
+}

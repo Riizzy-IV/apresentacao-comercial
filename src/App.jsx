@@ -27,6 +27,18 @@ import Cases from './pages/Estrategia/Cases/Cases';
 import Entregaveis from './pages/Estrategia/Entregaveis/Entregaveis';
 import Marketing from './pages/Marketing/Marketing';
 import Conceito from './pages/Marketing/Conceito/Conceito';
+import Enxoval from './pages/Marketing/Enxoval/Enxoval';
+import Performance from './pages/Marketing/Performance/Performance';
+import Importancia from './pages/Comercial/Importancia/Importancia';
+import FrentesVenda from './pages/Comercial/FrentesVenda/FrentesVenda';
+import EstruturaIdeal from './pages/Comercial/EstruturaIdeal/EstruturaIdeal';
+import MaiorDesafio from './pages/Comercial/MaiorDesafio/MaiorDesafio';
+import Assessoria from './pages/Comercial/Assessoria/Assessoria';
+import Roadmap from './pages/Comercial/Roadmap/Roadmap';
+import CasesComercial from './pages/Comercial/Cases/CasesComercial';
+import OperacaoPreVendas from './pages/Comercial/OperacaoPreVendas/OperacaoPreVendas';
+import OndeAgiriamos from './pages/Comercial/OndeAgiriamos/OndeAgiriamos';
+import Encerramento from './pages/Encerramento/Encerramento';
 import EmBreve from './pages/EmBreve/EmBreve';
 
 export default function App() {
@@ -78,8 +90,26 @@ export default function App() {
             <Route index element={<Marketing />} />
             {/* "/*" mantém a mesma instância no passo …/projetos */}
             <Route path="conceito/*" element={<Conceito />} />
+            <Route path="enxoval/*" element={<Enxoval />} />
+            <Route path="performance/*" element={<Performance />} />
             <Route path="*" element={<EmBreve embedded />} />
           </Route>
+
+          <Route path="/comercial" element={<SectionLayout route="/formula" />}>
+            <Route index element={<Importancia />} />
+            <Route path="frentes-da-venda" element={<FrentesVenda />} />
+            <Route path="estrutura-ideal" element={<EstruturaIdeal />} />
+            <Route path="o-maior-desafio" element={<MaiorDesafio />} />
+            <Route path="assessoria-comercial" element={<Assessoria />} />
+            <Route path="roadmap" element={<Roadmap />} />
+            <Route path="cases" element={<CasesComercial />} />
+            <Route path="operacao-pre-vendas" element={<OperacaoPreVendas />} />
+            <Route path="onde-agiriamos" element={<OndeAgiriamos />} />
+            <Route path="*" element={<EmBreve embedded />} />
+          </Route>
+
+          {/* slide final em tela cheia, sem menu lateral */}
+          <Route path="/encerramento" element={<Encerramento />} />
 
           {/* "/*" mantém a mesma instância no passo /formula/pilares, para animar no lugar */}
           <Route path="/formula/*" element={<Formula />} />

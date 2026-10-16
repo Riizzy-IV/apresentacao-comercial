@@ -1,0 +1,94 @@
+/* abas, linha do topo e setas: mesmas do carrossel de projetos (Marketing · Conceito) */
+.linhaTopo { composes: linhaTopo from '../Conceito/Projetos.module.css'; }
+.abas      { composes: abas from '../Conceito/Projetos.module.css'; }
+.aba       { composes: aba from '../Conceito/Projetos.module.css'; }
+.seta      { composes: seta from '../Conceito/Projetos.module.css'; z-index: 2; }
+.circulo   { composes: circulo from '../Conceito/Projetos.module.css'; }
+.chevron   { composes: chevron from '../Conceito/Projetos.module.css'; }
+.setaProxima { composes: setaProxima from '../Conceito/Projetos.module.css'; }
+
+.seta:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* Figma: Proxima Nova Extra Wide Bold 40px (indisponível) → Zalando Sans Expanded */
+.title {
+  position: absolute;
+  left: 391px;
+  top: 114px;
+  margin: 0;
+  font-family: var(--font-expanded);
+  font-size: 37px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-orange);
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}
+
+/* área visível do carrossel: do início dos cards até a borda direita da tela */
+.janela {
+  position: absolute;
+  left: 391px;
+  top: 195px;
+  width: 1529px;
+  height: 740px;
+  overflow: hidden;
+}
+
+.fileira {
+  display: flex;
+  gap: 32px;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.item {
+  flex: none;
+  width: 394px;
+  margin: 0;
+}
+
+.card {
+  display: block;
+  width: 394px;
+  height: 700px;
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #00243a;
+  cursor: pointer;
+}
+
+.card img,
+.card video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.legenda {
+  margin-top: 16px;
+  padding-left: 13px;
+  display: flex;
+  align-items: baseline;
+  gap: 13px;
+  white-space: nowrap;
+}
+
+.nome {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.cliente {
+  font-size: 16px;
+  line-height: 1.1;
+  color: rgba(255, 255, 255, 0.46);
+}

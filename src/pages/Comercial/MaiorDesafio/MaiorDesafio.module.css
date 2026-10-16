@@ -1,0 +1,108 @@
+.cabecalho {
+  position: absolute;
+  left: 425px;
+  top: 361px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+/* chamada com barra laranja à esquerda */
+.chamada {
+  margin: 0;
+  padding: 10px 38px;
+  border-left: 8px solid var(--color-orange);
+  font-size: 24px;
+  line-height: 1.3;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* Figma: Proxima Nova Extra Wide Bold 64px (indisponível) → Zalando Sans Expanded */
+.title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.39em; /* passo entre linhas = entrelinha 1.1 do Figma */
+  font-family: var(--font-expanded);
+  font-size: 59px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-orange);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.title span {
+  text-box: trim-both cap alphabetic;
+}
+
+.explicacao {
+  position: absolute;
+  left: 655px;
+  top: 582px;
+  display: flex;
+  align-items: flex-start;
+  gap: 29px;
+}
+
+/* seta: SVG maior que a caixa de 199.6×74 do Figma (sobra em cima, embaixo e à direita) */
+.seta {
+  flex: none;
+  display: block;
+  margin: -10.45px -10.45px -10.45px 0;
+}
+
+.explicacao p {
+  width: 700px;
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.1;
+  color: #fff;
+  text-box: trim-both cap alphabetic;
+}
+
+/* nota azul que começa acima da tela (top negativo), com cantos arredondados só embaixo */
+.nota {
+  position: absolute;
+  left: 1226px;
+  top: -55px;
+  width: 459px;
+  height: 234px;
+  padding: 33px 32px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 21px;
+  border: 1px solid #afd2df;
+  border-radius: 0 0 16px 16px;
+  background: #2f79a8;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* caixa de 109px (alinhada à base da nota) com o ícone no meio, como no Figma */
+.iconeCaixa {
+  height: 109px;
+  flex: none;
+  display: flex;
+  align-items: center;
+}
+
+.icone {
+  width: 62px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fff;
+  border-radius: 50%;
+}
+
+.nota p {
+  flex: 1;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.3;
+  color: #00243a;
+}

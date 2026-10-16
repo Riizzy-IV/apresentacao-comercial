@@ -1,0 +1,8 @@
+/* abas no canto superior direito (nos cases da Estratégia ficam à esquerda) */
+.tabs {
+  position: absolute;
+  left: 1093px;
+  top: 56px;
+  display: flex;
+  gap: 24px;
+}

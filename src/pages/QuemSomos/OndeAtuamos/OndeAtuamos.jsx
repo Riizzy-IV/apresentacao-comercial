@@ -140,7 +140,7 @@ function PartnerCard({ estado, dados, visible }) {
       aria-hidden={!visible}
     >
       <p className={styles.cardTitle}>
-        <span className={styles.cardPlus}>+</span> {dados.total} parceiros
+        <span className={styles.cardPlus}>+</span> {dados.total} {dados.total === 1 ? 'parceiro' : 'parceiros'}
       </p>
       <ul className={styles.chips}>
         {dados.clientes.map(c => <li key={c}>{c}</li>)}

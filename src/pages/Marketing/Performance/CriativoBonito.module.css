@@ -1,0 +1,11 @@
+/* arte ocupa toda a área à direita do menu (acima da barra inferior) */
+.arte {
+  position: absolute;
+  left: 351px;
+  top: 0;
+  width: 1569px;
+  height: 998px;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+}

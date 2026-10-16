@@ -1,0 +1,174 @@
+.cabecalho {
+  position: absolute;
+  left: 433px;
+  top: 131px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+/* chamada com barra laranja: "Nosso Serviço  (>)  ASSESSORIA COMERCIAL" */
+.chamada {
+  padding: 10px 38px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-left: 8px solid var(--color-orange);
+  font-size: 24px;
+  line-height: 1.3;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.trim {
+  text-box: trim-both cap alphabetic;
+}
+
+/* SVG de 54px ocupando a caixa de 41.8px do Figma */
+.setaCirculo {
+  flex: none;
+  display: block;
+  margin: -6.2px;
+}
+
+/* Figma: Proxima Nova Extra Wide Bold 64px (indisponível) → Zalando Sans Expanded */
+.title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.39em; /* passo entre linhas = entrelinha 1.1 do Figma */
+  font-family: var(--font-expanded);
+  font-size: 59px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-orange);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.title span {
+  text-box: trim-both cap alphabetic;
+}
+
+.title .claro {
+  color: #ededed;
+}
+
+.resultados {
+  position: absolute;
+  left: 440px;
+  top: 560px;
+  width: 485px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.resultado {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.resultado img {
+  flex: none;
+  display: block;
+}
+
+.resultado p {
+  width: 445px;
+  margin: 0;
+  font-size: 18px;
+  line-height: normal;
+  color: #fff;
+}
+
+.resultado strong {
+  display: block;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--color-orange);
+}
+
+/* linha de 2px desenhada acima do ponto em que fica (altura zero no Figma) */
+.linha {
+  display: block;
+  margin-top: -2px;
+}
+
+/* print 1: diagnóstico, cantos arredondados só à esquerda (passa da borda direita) */
+.diagnostico {
+  position: absolute;
+  left: 1202px;
+  top: 50px;
+  width: 532px;
+  height: 309px;
+  border-radius: 12.765px 0 0 12.765px;
+  overflow: hidden;
+  box-shadow: 0 36.471px 72.941px rgba(0, 0, 0, 0.4);
+}
+
+.diagnostico img {
+  position: absolute;
+  left: -13.44%;
+  top: -2.34%;
+  width: 119.18%;
+  height: 102.34%;
+  max-width: none;
+}
+
+/* print 2: detalhe do diagnóstico, rola por dentro (sem barra de rolagem visível) */
+.detalheSombra {
+  position: absolute;
+  left: 1355px;
+  top: 385px;
+  width: 519px;
+  height: 378px;
+  filter: drop-shadow(0 18.235px 27.353px rgba(0, 0, 0, 0.25));
+}
+
+.detalhe {
+  width: 100%;
+  height: 100%;
+  border-radius: 7.294px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  scrollbar-width: none;
+}
+
+.detalhe::-webkit-scrollbar {
+  display: none;
+}
+
+.detalhe img {
+  display: block;
+  width: 589.921px;
+  height: 818.753px;
+  max-width: none;
+  margin-top: -16px;
+  object-fit: cover;
+}
+
+/* print 3: conversa no WhatsApp */
+.whatsapp {
+  position: absolute;
+  left: 976px;
+  top: 681px;
+  width: 373px;
+  height: 240px;
+  border-radius: 7.294px;
+  overflow: hidden;
+  box-shadow: 0 18.235px 54.706px rgba(0, 0, 0, 0.25);
+}
+
+.whatsapp img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

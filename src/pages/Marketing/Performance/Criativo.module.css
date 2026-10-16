@@ -1,0 +1,123 @@
+/* título + chamada, centralizados em y = 494.5 (Figma: top 50% − 45.5px) */
+.bloco {
+  position: absolute;
+  left: 456px;
+  top: 494.5px;
+  transform: translateY(-50%);
+  width: 536px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 35px;
+}
+
+/* Figma: Proxima Nova Extra Wide Bold 64px (indisponível) → Zalando Sans Expanded */
+.title {
+  width: 100%;
+  margin: 0;
+  font-family: var(--font-expanded);
+  font-size: 59px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-orange);
+  text-transform: uppercase;
+  text-box: trim-both cap alphabetic;
+}
+
+.title span {
+  color: #ededed;
+}
+
+/* chamada com barra laranja à esquerda */
+.frase {
+  width: 100%;
+  padding: 10px 38px;
+  display: flex;
+  justify-content: center;
+  border-left: 8px solid var(--color-orange);
+}
+
+.frase p {
+  width: 448px;
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.3;
+  color: #fff;
+  text-box: trim-both cap alphabetic;
+}
+
+/* card de perfil: foto com degradê azul da esquerda para a direita */
+.card {
+  position: absolute;
+  left: 1047px;
+  width: 805px;
+  height: 250px;
+  padding-left: 48px;
+  display: flex;
+  align-items: center;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.fundo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.fundo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #00243a 23.727%, rgba(0, 36, 58, 0));
+}
+
+.foto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Figma: foto espelhada, ampliada e deslocada para cima */
+.fotoSegunda {
+  position: absolute;
+  left: 0;
+  top: -70.15%;
+  width: 112.17%;
+  height: 240.3%;
+  max-width: none;
+  transform: scaleX(-1);
+}
+
+.conteudo {
+  position: relative;
+  width: 321px;
+  height: 184px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.tag {
+  padding: 10px;
+  border-radius: 4px;
+  background: var(--color-orange);
+  font-family: var(--font-expanded);
+  font-size: 16px;
+  line-height: 1.1;
+  color: #fff;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}
+
+.itens {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.1;
+  color: #fff;
+  text-box: trim-both cap alphabetic;
+}

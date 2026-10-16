@@ -1,0 +1,67 @@
+.root {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: linear-gradient(to bottom, var(--color-navy-800), var(--color-navy-900));
+}
+
+/* contorno desfocado do logo, cortado pelo canto superior direito */
+.contorno {
+  position: absolute;
+  left: 803.1px;
+  top: -445.8px;
+  max-width: none;
+  pointer-events: none;
+}
+
+.logo {
+  position: absolute;
+  left: 93px;
+  top: 114px;
+  width: 762px;
+  height: 762px;
+  mix-blend-mode: lighten;
+  pointer-events: none;
+}
+
+/* Figma: Proxima Nova Extra Wide Bold (indisponível) → Zalando Sans Expanded */
+.kicker,
+.title {
+  position: absolute;
+  left: 902px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.39em; /* passo entre linhas = entrelinha 1.1 do Figma */
+  font-family: var(--font-expanded);
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.kicker span,
+.title span {
+  text-box: trim-both cap alphabetic;
+}
+
+.kicker {
+  top: 363px;
+  font-size: 37px;
+  color: var(--color-orange);
+}
+
+.title {
+  top: 523px;
+  font-size: 59px;
+  color: #ededed;
+}
+
+.faixa {
+  position: absolute;
+  left: 902px;
+  top: 681px;
+  max-width: none;
+  transform-origin: left center;
+  pointer-events: none;
+}

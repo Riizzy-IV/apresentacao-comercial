@@ -57,7 +57,7 @@ const FORMULA_GROUPS = [
       { route: '/comercial/estrutura-ideal',      label: 'Estrutura ideal' },
       { route: '/comercial/o-maior-desafio',      label: 'O maior desafio' },
       { route: '/comercial/assessoria-comercial', label: 'Assessoria comercial' },
-      { route: '/comercial/roadmap',              label: 'Roadmap' },
+      { route: '/comercial/entregaveis',          label: 'Entregáveis' },
       { route: '/comercial/cases',                label: 'Cases' },
       { route: '/comercial/operacao-pre-vendas',  label: 'Operação pré-vendas' },
       { route: '/comercial/onde-agiriamos',       label: 'Onde agiríamos' },

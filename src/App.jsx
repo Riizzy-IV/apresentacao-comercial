@@ -101,7 +101,7 @@ export default function App() {
             <Route path="estrutura-ideal" element={<EstruturaIdeal />} />
             <Route path="o-maior-desafio" element={<MaiorDesafio />} />
             <Route path="assessoria-comercial" element={<Assessoria />} />
-            <Route path="roadmap" element={<Roadmap />} />
+            <Route path="entregaveis" element={<Roadmap />} />
             <Route path="cases" element={<CasesComercial />} />
             <Route path="operacao-pre-vendas" element={<OperacaoPreVendas />} />
             <Route path="onde-agiriamos" element={<OndeAgiriamos />} />

@@ -1,17 +1,20 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import StageImage from '../../../components/StageImage/StageImage';
+import AttaPopup from './AttaPopup';
 import styles from './Atta3D.module.css';
 
-// cards de vidro dos produtos (Figma: coluna de 410px em x=439, y=422, espaço de 16px)
+// cards de vidro dos produtos (Figma: coluna de 410px em x=439, y=422, espaço de 16px).
+// `id` = pop-up aberto ao clicar (ver AttaPopup.jsx)
 const PRODUCTS = [
-  { src: '/img/atta3d/atta-web.svg',   alt: 'Atta Web',   width: 172, height: 63 },
-  { src: '/img/atta3d/atta-touch.svg', alt: 'Atta Touch', width: 208, height: 82 },
-  { src: '/img/atta3d/atta-ultra.svg', alt: 'Atta Ultra', width: 213, height: 54 },
+  { id: 'web',   src: '/img/atta3d/atta-web.svg',   alt: 'Atta Web',   width: 172, height: 63 },
+  { id: 'touch', src: '/img/atta3d/atta-touch.svg', alt: 'Atta Touch', width: 208, height: 82 },
+  { id: 'ultra', src: '/img/atta3d/atta-ultra.svg', alt: 'Atta Ultra', width: 213, height: 54 },
 ];
 
 export default function Atta3D() {
   const rootRef = useRef(null);
+  const [aberto, setAberto] = useState(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -49,14 +52,15 @@ export default function Atta3D() {
 
       <div className={styles.products}>
         {PRODUCTS.map(p => (
-          <div key={p.src} className={styles.card} data-anim="product">
+          <button key={p.src} className={styles.card} onClick={() => setAberto(p.id)}
+            aria-label={`Ver detalhes do ${p.alt}`} data-anim="product">
             <img src={p.src} alt={p.alt} width={p.width} height={p.height} />
             {/* seta circular: nítida por cima da versão desfocada (brilho) */}
             <span className={styles.cardIcon}>
               <img src="/img/atta3d/card-seta.svg" alt="" width="54.233" height="54.233" />
               <img src="/img/atta3d/card-seta-sharp.svg" alt="" width="54.233" height="54.233" />
             </span>
-          </div>
+          </button>
         ))}
       </div>
 
@@ -68,6 +72,8 @@ export default function Atta3D() {
       <p className={styles.closing} data-anim="closing">
         Nosso trabalho é definido por pensamento cuidadoso, precisão técnica e atenção ao detalhe.
       </p>
+
+      {aberto && <AttaPopup key={aberto} produto={aberto} onClose={() => setAberto(null)} />}
     </div>
   );
 }

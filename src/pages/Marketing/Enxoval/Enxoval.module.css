@@ -13,6 +13,110 @@
   color: #2f79a8;
 }
 
+/* site ao vivo ocupando o painel inteiro (rola por dentro do próprio site) */
+.site {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* quadro do vídeo: é ele que vai para a tela cheia (com o botão junto) */
+.videoBox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 8px;
+}
+
+.videoBox:fullscreen {
+  border-radius: 0;
+}
+
+/* botão ampliar/reduzir no canto superior esquerdo (o direito tem o ícone do player do Drive) */
+.videoTamanho {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.videoTamanho:hover {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+}
+
+/* sem internet: capa do vídeo com aviso por cima */
+.videoOffline {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.videoOffline img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  filter: brightness(0.45);
+}
+
+.videoOffline p {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* vídeo ocupando o painel, com fundo preto nas sobras (painel 1479×761, vídeo 16:9) */
+.video {
+  border: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: #000;
+  object-fit: contain;
+}
+
+/* páginas do book empilhadas, com um respiro escuro entre elas */
+.book {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #00243a;
+}
+
+.bookPagina {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
 .print {
   display: block;
   width: 100%;

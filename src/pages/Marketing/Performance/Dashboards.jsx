@@ -12,5 +12,5 @@ const PROJETOS = [1, 2, 3, 4].map(() => ({
 
 /** Marketing · Performance, passo 10 (Figma "Tela 17"): dashboard de resultados de cada projeto. */
 export default function Dashboards() {
-  return <Projetos projetos={PROJETOS} classes={{ painel: styles.painel, nome: styles.nome }} />;
+  return <Projetos projetos={PROJETOS} classes={{ abas: styles.abas, painel: styles.painel, nome: styles.nome }} />;
 }

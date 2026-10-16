@@ -2,6 +2,7 @@ import { Fragment, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
 import FormulaBackground from '../../../components/FormulaBackground/FormulaBackground';
+import MenuPassos from '../../../components/MenuPassos/MenuPassos';
 import Projetos from './Projetos';
 import Entregaveis from './Entregaveis';
 import styles from './Conceito.module.css';
@@ -74,7 +75,14 @@ const Intro = () => <PilaresIntro titulo="Conceito" foto="/img/marketing/conceit
  *  2. (/marketing/conceito/projetos) os projetos, com o brandbook de cada um;
  *  3. (/marketing/conceito/entregaveis) a lista de entregáveis.
  */
-const PASSOS = { projetos: Projetos, entregaveis: Entregaveis };
+const PASSOS = { projetos: Projetos, entregaveis: () => <Entregaveis linhaTop={73} /> };
+
+// menu dos passos no canto superior direito
+const MENU = [
+  { rota: '/marketing/conceito',             label: 'Introdução' },
+  { rota: '/marketing/conceito/projetos',    label: 'Cases' },
+  { rota: '/marketing/conceito/entregaveis', label: 'Entregáveis' },
+];
 
 export default function Conceito() {
   const { pathname } = useLocation();
@@ -92,6 +100,8 @@ export default function Conceito() {
     <div ref={rootRef}>
       <FormulaBackground />
       <Passo key={pathname} />
+
+      <MenuPassos itens={MENU} />
     </div>
   );
 }

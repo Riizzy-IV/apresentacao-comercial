@@ -1,20 +1,34 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import StageImage from '../../../components/StageImage/StageImage';
 import styles from './Parceiros.module.css';
 
+// `sobre` = texto do balão que aparece ao passar o mouse / tocar no logo
 const LOGOS = [
   // ECO NJR no lugar da TOM, centralizada no mesmo ponto (625.8, 479.5)
-  { src: '/img/logos/eco-njr-branco.png', alt: 'ECO NJR',                  left: 485.8,   top: 444.3, width: 280, height: 70.4 },
-  { src: '/img/parceiros/inc.png',     alt: 'INC Empreendimentos',         left: 969,     top: 438, width: 214, height: 89 },
-  { src: '/img/parceiros/dialogo.png', alt: 'Diálogo Engenharia',          left: 1374.29, top: 432, width: 303, height: 96 },
-  { src: '/img/parceiros/porte.png',   alt: 'Porte Engenharia e Urbanismo', left: 519,    top: 635, width: 236, height: 118 },
-  { src: '/img/parceiros/ginco.svg',   alt: 'GINCO',                       left: 940,     top: 668, width: 266, height: 51 },
+  { src: '/img/logos/eco-njr-branco.png', alt: 'Ecossistema Neymar Jr.', left: 485.8, top: 444.3, width: 280, height: 70.4,
+    sobre: 'Complexo esportivo e de lazer em Porto Belo (SC), com hotel, quadras e o espaço NJ Experience, dentro de um bairro planejado.' },
+  { src: '/img/parceiros/inc.png', alt: 'INC Empreendimentos', left: 969, top: 438, width: 214, height: 89,
+    sobre: 'Construtora e incorporadora de São José do Rio Preto (SP), à frente de lançamentos verticais como o Unique Palestra.' },
+  { src: '/img/parceiros/dialogo.png', alt: 'Diálogo Engenharia', left: 1374.29, top: 432, width: 303, height: 96,
+    sobre: 'Incorporadora paulistana fundada em 1987, com mais de 184 empreendimentos lançados, referência na Zona Leste de São Paulo.' },
+  { src: '/img/parceiros/porte.png', alt: 'Porte Engenharia e Urbanismo', left: 519, top: 635, width: 236, height: 118,
+    sobre: 'Há 35 anos transformando a Zona Leste de São Paulo; responsável pelo Platina 220, o prédio mais alto da cidade.' },
+  { src: '/img/parceiros/ginco.svg', alt: 'Ginco Urbanismo', left: 940, top: 668, width: 266, height: 51,
+    sobre: 'Urbanizadora de Cuiabá (MT) especializada em condomínios horizontais fechados de alto padrão, como o Florais e o Ginco Zurique.' },
 ];
 
 export default function Parceiros() {
   const rootRef = useRef(null);
   const countRef = useRef(null);
+  const [ativo, setAtivo] = useState(null);
+
+  // toque fora de um logo fecha o balão (telas touch)
+  useEffect(() => {
+    const fechar = () => setAtivo(null);
+    window.addEventListener('click', fechar);
+    return () => window.removeEventListener('click', fechar);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -54,9 +68,19 @@ export default function Parceiros() {
       ))}
       <div className={styles.lineH} data-anim="grid-h" />
 
-      {LOGOS.map(l => (
-        <img key={l.src} src={l.src} alt={l.alt} className={styles.logo}
-          style={{ left: l.left, top: l.top, width: l.width, height: l.height }} data-anim="logo" />
+      {LOGOS.map((l, i) => (
+        <div key={l.src} className={`${styles.logoBox} ${ativo === i ? styles.logoAtivo : ''}`}
+          style={{ left: l.left, top: l.top, width: l.width, height: l.height }}
+          onPointerEnter={e => e.pointerType === 'mouse' && setAtivo(i)}
+          onPointerLeave={e => e.pointerType === 'mouse' && setAtivo(null)}
+          onClick={e => { e.stopPropagation(); setAtivo(a => (a === i ? null : i)); }}
+          data-anim="logo">
+          <img src={l.src} alt={l.alt} className={styles.logo} draggable={false} />
+          <div className={styles.balao} role="tooltip" aria-hidden={ativo !== i}>
+            <p className={styles.balaoNome}>{l.alt}</p>
+            <p className={styles.balaoTexto}>{l.sobre}</p>
+          </div>
+        </div>
       ))}
 
       <p className={styles.count} data-anim="count">

@@ -1,0 +1,52 @@
+.menu {
+  position: absolute;
+  right: 46px;
+  top: 10px;
+  z-index: 4;
+  display: flex;
+  gap: 24px;
+}
+
+.item {
+  height: 54px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+
+.item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* versão compacta: 12 passos cabem entre o menu lateral e a borda direita, acima da linha (y=47) */
+.compacto {
+  top: 6px;
+  gap: 8px;
+}
+
+.compacto .item {
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.ativo,
+.ativo:hover {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+  color: #00243a;
+  cursor: default;
+}

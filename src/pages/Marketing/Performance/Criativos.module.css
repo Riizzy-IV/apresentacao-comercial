@@ -1,6 +1,8 @@
 /* abas, linha do topo e setas: mesmas do carrossel de projetos (Marketing · Conceito) */
 .linhaTopo { composes: linhaTopo from '../Conceito/Projetos.module.css'; }
+/* abas na linha do título, à direita (o topo é do menu dos passos da Performance) */
 .abas      { composes: abas from '../Conceito/Projetos.module.css'; }
+.abas.abas { left: auto; right: 46px; top: 104px; }
 .aba       { composes: aba from '../Conceito/Projetos.module.css'; }
 .seta      { composes: seta from '../Conceito/Projetos.module.css'; z-index: 2; }
 .circulo   { composes: circulo from '../Conceito/Projetos.module.css'; }
@@ -38,6 +40,22 @@
   overflow: hidden;
 }
 
+/* arraste com mouse/toque */
+.janela {
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.arrastando {
+  cursor: grabbing;
+}
+
+/* durante o arraste a fileira acompanha o ponteiro sem animação */
+.arrastando .fileira {
+  transition: none;
+}
+
 .fileira {
   display: flex;
   gap: 32px;
@@ -50,7 +68,40 @@
   margin: 0;
 }
 
+/* botão de play: círculo de vidro com borda laranja no centro do card */
+.play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 96px;
+  height: 96px;
+  margin: -48px 0 0 -48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 6px; /* compensa o triângulo para parecer centralizado */
+  border: 2px solid var(--color-orange);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #fff;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+
+.card:hover .play {
+  background: var(--color-orange);
+  transform: scale(1.08);
+}
+
+.playOculto {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
 .card {
+  position: relative;
   display: block;
   width: 394px;
   height: 700px;

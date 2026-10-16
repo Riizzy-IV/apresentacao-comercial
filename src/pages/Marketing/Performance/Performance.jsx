@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
 import FormulaBackground from '../../../components/FormulaBackground/FormulaBackground';
+import MenuPassos from '../../../components/MenuPassos/MenuPassos';
 import Experiencia from './Experiencia';
 import Criativo from './Criativo';
 import CriativoBonito from './CriativoBonito';
@@ -88,6 +89,23 @@ const PASSOS = {
   entregaveis: EntregaveisPerformance,
 };
 
+// menu dos passos (compacto: são 12)
+const P = '/marketing/performance';
+const MENU = [
+  { rota: P,                        label: 'Introdução' },
+  { rota: `${P}/experiencia`,       label: 'Dados' },
+  { rota: `${P}/criativo`,          label: 'Diferencial' },
+  { rota: `${P}/criativo-bonito`,   label: 'Ruptura' },
+  { rota: `${P}/video-conceito`,    label: 'Criativo X Conceito' },
+  { rota: `${P}/aida`,              label: 'AIDA' },
+  { rota: `${P}/tecnologia`,        label: 'Tecnologia' },
+  { rota: `${P}/criativos`,         label: 'Cases' },
+  { rota: `${P}/dados`,             label: 'Dados' },
+  { rota: `${P}/dashboards`,        label: 'Dash' },
+  { rota: `${P}/funil`,             label: 'Funil' },
+  { rota: `${P}/entregaveis`,       label: 'Entregáveis' },
+];
+
 export default function Performance() {
   const { pathname } = useLocation();
   const rootRef = useRef(null);
@@ -104,6 +122,7 @@ export default function Performance() {
     <div ref={rootRef}>
       <FormulaBackground />
       <Passo key={pathname} />
+      <MenuPassos itens={MENU} compacto />
     </div>
   );
 }

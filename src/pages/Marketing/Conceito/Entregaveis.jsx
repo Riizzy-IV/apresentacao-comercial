@@ -14,9 +14,9 @@ const COLUNAS = [{
 /**
  * Marketing · Conceito, passo 3 (Figma "Tela 49"): lista dos entregáveis + mockup da papelaria.
  * Também usado no Enxoval: `sub` = subtítulo, `colunas` = listas lado a lado (posição, divisor
- * e itens), `mockup` = imagem à direita (opcional).
+ * e itens), `mockup` = imagem à direita (opcional), `linhaTop` = altura da linha pontilhada do topo.
  */
-export default function Entregaveis({ sub = 'Conceito', colunas = COLUNAS, mockup = '/img/marketing/entregaveis-mockup.png' }) {
+export default function Entregaveis({ sub = 'Conceito', colunas = COLUNAS, mockup = '/img/marketing/entregaveis-mockup.png', linhaTop }) {
   const rootRef = useRef(null);
 
   useEffect(() => {
@@ -31,7 +31,8 @@ export default function Entregaveis({ sub = 'Conceito', colunas = COLUNAS, mocku
 
   return (
     <div ref={rootRef}>
-      <img src="/img/estrategia/linha-topo.svg" alt="" width="1569" height="2" className={styles.linhaTopo} />
+      <img src="/img/estrategia/linha-topo.svg" alt="" width="1569" height="2" className={styles.linhaTopo}
+        style={linhaTop ? { top: linhaTop } : undefined} />
 
       {mockup && <img src={mockup} alt="" className={styles.mockup} data-anim="mockup" draggable={false} />}
 

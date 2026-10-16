@@ -14,19 +14,13 @@
   max-width: none;
 }
 
-.guilhermePhoto { left: 419px; top: 76px; }
-.guilhermePhoto img { height: 125.58%; top: -16.43%; }
+.guilhermeFoto img { height: 125.58%; top: -16.43%; }
 
-.enzoPhoto { left: 1152px; top: 394px; }
 /* "cover" centralizado, como no Figma */
-.enzoPhoto img { top: 0; height: 100%; object-fit: cover; }
+.enzoFoto img { top: 0; height: 100%; object-fit: cover; }
 
-.bar {
-  position: absolute;
-  width: 13px;
-  height: 105px;
-  background: var(--color-orange);
-}
+/* ampliada e deslocada, como no Figma */
+.carlosFoto img { left: -7.83%; top: -12.22%; width: 121.36%; height: 151.02%; }
 
 .name {
   position: absolute;
@@ -39,6 +33,7 @@
   text-box: trim-both cap alphabetic;
 }
 
+/* sobrenome em letra cursiva, por cima da base da foto */
 .surname {
   position: absolute;
   font-family: var(--font-script);
@@ -48,31 +43,41 @@
   line-height: 1.1;
   white-space: nowrap;
   color: var(--color-off-white);
-}
-
-.gradientLine {
-  position: absolute;
-  width: 252px;
-  height: 18px;
-  background: linear-gradient(to right, var(--color-orange), var(--color-blue-light));
+  text-box: trim-both cap alphabetic;
 }
 
 .role {
   position: absolute;
+  top: 630px;
   font-size: 32px;
   font-weight: 700;
   line-height: 1.1;
   text-transform: uppercase;
+  white-space: nowrap;
   color: var(--color-blue-light);
   text-box: trim-both cap alphabetic;
 }
 
+.gradientLine {
+  position: absolute;
+  top: 667px;
+  width: 117px;
+  height: 8px;
+  background: linear-gradient(to right, var(--color-orange), var(--color-blue-light));
+}
+
 .bio {
   position: absolute;
+  top: 692px;
+  margin: 0;
   font-size: 18px;
   font-weight: 400;
   line-height: 1.3;
   color: var(--color-white);
+}
+
+.bioTrim {
+  text-box: trim-both cap alphabetic;
 }
 
 .bioHighlight {

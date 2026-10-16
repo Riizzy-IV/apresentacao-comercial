@@ -6,7 +6,7 @@ import styles from './Zimbel.module.css';
 const PROJECTS = [
   { logo: '/img/zimbel/esperanca.png', logoH: 48, name: 'Esperança Prime',   status: '100% vendido', top: 400, width: 330,
     unidades: '29 unidades', vgv: 'R$ 9 milhões' },
-  { logo: '/img/zimbel/evolution.png', logoH: 49, name: 'Evolution Tatuapé', status: '80% vendido',  top: 590, width: 330,
+  { logo: '/img/zimbel/evolution.png', logoH: 49, name: 'Evolution Tatuapé', status: '90% vendido',  top: 590, width: 330,
     unidades: '40 unidades', vgv: 'R$ 17 milhões' },
 ];
 

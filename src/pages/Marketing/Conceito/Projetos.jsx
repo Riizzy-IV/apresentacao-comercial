@@ -16,7 +16,8 @@ const PROJETOS = [
  * Marketing · Conceito, passo 2 (Figma "Tela 11"): abas com os projetos e, para cada um,
  * o brandbook num painel branco com rolagem. As setas laterais trocam de projeto.
  * Também usado no Enxoval e na Performance (`projetos` = outra lista; `classes` = ajustes de
- * estilo por tela, somados às classes padrão: `painel`, `nome`, `cliente`).
+ * estilo por tela, somados às classes padrão: `abas`, `painel`, `nome`, `cliente`).
+ * Cada item pode ter `aba` = texto do botão, quando for diferente do nome mostrado no título.
  */
 export default function Projetos({ projetos = PROJETOS, classes = {} }) {
   // abre no primeiro projeto com layout
@@ -55,11 +56,11 @@ export default function Projetos({ projetos = PROJETOS, classes = {} }) {
     <div ref={rootRef}>
       <img src="/img/estrategia/linha-topo.svg" alt="" width="1569" height="2" className={styles.linhaTopo} />
 
-      <nav className={styles.abas}>
+      <nav className={`${styles.abas} ${classes.abas ?? ''}`}>
         {projetos.map((p, i) => (
           <button key={i} className={`${styles.aba} ${i === atual ? styles.abaAtiva : ''}`}
             onClick={() => setAtual(i)} data-anim="aba">
-            {p.nome}
+            {p.aba ?? p.nome}
           </button>
         ))}
       </nav>
@@ -71,7 +72,7 @@ export default function Projetos({ projetos = PROJETOS, classes = {} }) {
         </div>
 
         <div ref={painelRef} className={`${styles.painel} ${classes.painel ?? ''}`} data-anim="painel">
-          {Conteudo ? <Conteudo /> : <p className={styles.emBreve}>Projeto em breve</p>}
+          {Conteudo ? <Conteudo /> : <p className={styles.emBreve}>Em breve</p>}
         </div>
       </div>
 

@@ -5,7 +5,7 @@ const COLUNAS = [{
   linha: { src: '/img/marketing/performance/linha-lista-1130.svg', width: 1130 },
   itens: [
     'Desenvolvimento de criativos (vídeo e estático)',
-    'Criação e gestão de campanhas do Meta e Google Ads',
+    'Criação e gestão de campanhas do Meta e Google Ads (Tráfego Pago)',
     'Estratégias focadas em geração de leads e autoridade digital',
     'Relatórios com insights e análises',
     'Reuniões mensais de acompanhamento de resultados',

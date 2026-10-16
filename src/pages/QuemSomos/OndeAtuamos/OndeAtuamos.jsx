@@ -23,7 +23,7 @@ const DOTS = [
 
 // marcadores do mapa: [x, y, tamanho do anel]
 const MARKERS = [
-  [1497.46, 304.02, 44.809], [1644.57, 312.47, 44.809], [1757.41, 337.52, 22.487], [1802.67, 337.83, 22.487],
+  [1497.46, 304.02, 44.809], [1757.41, 337.52, 22.487], [1802.67, 337.83, 22.487],
   [1822.96, 363.2, 22.487],  [1780.39, 388.35, 22.487], [1816.2, 412.23, 22.487],  [1306.39, 433.37, 38.891],
   [1709.67, 463.81, 41.427], [1445.89, 467.19, 38.045], [1562.56, 522.14, 44.809], [1634.43, 572.02, 54.954],
   [1736.73, 610.92, 22.487], [1472.1, 614.3, 22.487],   [1589.62, 655.72, 44.809], [1693, 658.68, 22.487],
@@ -139,12 +139,10 @@ function PartnerCard({ estado, dados, visible }) {
       style={{ left, top: y - 34, width: CARD_W }}
       aria-hidden={!visible}
     >
-      <p className={styles.cardTitle}>
-        <span className={styles.cardPlus}>+</span> {dados.total} {dados.total === 1 ? 'parceiro' : 'parceiros'}
-      </p>
+      <p className={styles.cardTitle}>{estado.nome}</p>
       <ul className={styles.chips}>
         {dados.clientes.map(c => <li key={c}>{c}</li>)}
-        {dados.maisClientes && <li>e muito mais</li>}
+        <li>e muito mais...</li>
       </ul>
     </div>
   );

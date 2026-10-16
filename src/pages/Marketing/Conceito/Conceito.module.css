@@ -1,7 +1,8 @@
+/* linha pontilhada logo abaixo do menu dos passos (mesma altura nos 3 passos) */
 .linhaTopo {
   position: absolute;
   left: 351px;
-  top: 47px;
+  top: 73px;
   max-width: none;
   pointer-events: none;
 }

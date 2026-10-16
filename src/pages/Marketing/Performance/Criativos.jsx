@@ -3,11 +3,16 @@ import { gsap } from 'gsap';
 import styles from './Criativos.module.css';
 
 const CAPAS = '/img/marketing/performance/criativos';
+const VIDEOS = '/videos/criativos';
 
-// criativos em vídeo. `video` = arquivo em /public (null = ainda sem o arquivo; mostra só a capa)
-const CRIATIVOS = [1, 2, 3, 4].map(n => ({
-  nome: 'Léman View', cliente: 'Construtora Fenícia', capa: `${CAPAS}/capa-${n}.jpg`, video: null,
-}));
+// criativos em vídeo (vertical 1080×1920). `id` = nome dos arquivos de vídeo e capa
+const CRIATIVOS = [
+  { id: 'leman-1', nome: 'Léman View',         cliente: 'Construtora Fenícia' },
+  { id: 'leman-2', nome: 'Léman View',         cliente: 'Construtora Fenícia' },
+  { id: 'like',    nome: 'Like Premium',       cliente: 'Like Premium' },
+  { id: 'monaco',  nome: 'Mônaco Residencial', cliente: 'Nexus Empreendimentos' },
+  { id: 'nexus',   nome: 'Nexus',              cliente: 'VSG Construtora' },
+].map(c => ({ ...c, capa: `${CAPAS}/capa-${c.id}.jpg`, video: `${VIDEOS}/${c.id}.mp4` }));
 
 const PASSO = 426;      // largura do card (394) + espaço entre cards (32)
 const VISIVEIS = 3;     // cards inteiros na área visível
@@ -15,13 +20,16 @@ const MAX = Math.max(0, CRIATIVOS.length - VISIVEIS);
 
 /**
  * Marketing · Performance, passo 8 (Figma "Tela 19"): carrossel de criativos em vídeo.
- * As setas e as abas deslizam a fileira; clicar no card toca/pausa o vídeo.
+ * As setas, as abas e o arraste (mouse ou toque) deslizam a fileira; clicar no card toca/pausa o vídeo.
  */
 export default function Criativos() {
   const rootRef = useRef(null);
+  const janelaRef = useRef(null);
   const videosRef = useRef([]);
+  const arraste = useRef(null);     // { x, escala, moveu } enquanto o ponteiro está pressionado
   const [inicio, setInicio] = useState(0);
   const [tocando, setTocando] = useState(null);
+  const [deslocamento, setDeslocamento] = useState(0); // px (no palco) do arraste em andamento
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -37,7 +45,43 @@ export default function Criativos() {
 
   const ir = i => setInicio(Math.min(MAX, Math.max(0, i)));
 
+  // arraste: a fileira segue o ponteiro; ao soltar, encaixa no card mais próximo.
+  // Movimento menor que 8px conta como clique (toca/pausa o vídeo).
+  const iniciarArraste = e => {
+    if (e.button !== undefined && e.button !== 0) return;
+    // o palco é escalado: converte pixels da tela para pixels do palco (1529 = largura da janela)
+    const escala = janelaRef.current.getBoundingClientRect().width / 1529;
+    arraste.current = { x: e.clientX, escala, moveu: false };
+  };
+
+  const moverArraste = e => {
+    const a = arraste.current;
+    if (!a) return;
+    let dx = (e.clientX - a.x) / a.escala;
+    if (!a.moveu && Math.abs(dx) < 8) return;
+    if (!a.moveu) { a.moveu = true; janelaRef.current.setPointerCapture?.(e.pointerId); }
+    // resistência nas pontas: além do primeiro/último card, a fileira anda só 30% do arraste
+    const pos = inicio * PASSO - dx;
+    const limite = MAX * PASSO;
+    if (pos < 0) dx = inicio * PASSO - pos * 0.3;
+    else if (pos > limite) dx = inicio * PASSO - (limite + (pos - limite) * 0.3);
+    a.dx = dx;
+    setDeslocamento(dx);
+  };
+
+  const soltarArraste = () => {
+    const a = arraste.current;
+    arraste.current = null;
+    setDeslocamento(0);
+    if (!a || !a.moveu) return;
+    ir(inicio + Math.round(-(a.dx ?? 0) / PASSO));
+    ultimoArraste.current = Date.now(); // o clique que vem logo após soltar não toca o vídeo
+  };
+
+  const ultimoArraste = useRef(0);
+
   const alternar = i => {
+    if (Date.now() - ultimoArraste.current < 250) return;
     const v = videosRef.current[i];
     if (!v) return;
     videosRef.current.forEach((outro, j) => j !== i && outro?.pause());
@@ -57,16 +101,25 @@ export default function Criativos() {
 
       <h1 className={styles.title} data-anim="title">Criativos</h1>
 
-      <div className={styles.janela}>
-        <div className={styles.fileira} style={{ transform: `translateX(${-inicio * PASSO}px)` }}>
+      <div ref={janelaRef} className={`${styles.janela} ${deslocamento ? styles.arrastando : ''}`}
+        onPointerDown={iniciarArraste} onPointerMove={moverArraste}
+        onPointerUp={soltarArraste} onPointerCancel={soltarArraste} onPointerLeave={soltarArraste}
+        onDragStart={e => e.preventDefault()}>
+        <div className={styles.fileira} style={{ transform: `translateX(${-inicio * PASSO + deslocamento}px)` }}>
           {CRIATIVOS.map((c, i) => (
             <figure key={i} className={styles.item} data-anim="card">
               <button className={styles.card} onClick={() => alternar(i)}
                 aria-label={c.video ? `${tocando === i ? 'Pausar' : 'Tocar'} vídeo ${i + 1}` : `Criativo ${i + 1}`}>
                 {c.video
-                  ? <video ref={el => (videosRef.current[i] = el)} src={c.video} poster={c.capa} playsInline loop
-                      onEnded={() => setTocando(null)} />
+                  ? <video ref={el => (videosRef.current[i] = el)} src={c.video} poster={c.capa} preload="metadata" playsInline loop
+                      onEnded={() => setTocando(null)} onPause={() => setTocando(t => (t === i ? null : t))} />
                   : <img src={c.capa} alt="" draggable={false} />}
+                {/* botão de play no centro; some enquanto o vídeo toca e volta ao pausar */}
+                {c.video && (
+                  <span className={`${styles.play} ${tocando === i ? styles.playOculto : ''}`} aria-hidden>
+                    <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.92-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14z" /></svg>
+                  </span>
+                )}
               </button>
               <figcaption className={styles.legenda}>
                 <span className={styles.nome}>{c.nome}</span>

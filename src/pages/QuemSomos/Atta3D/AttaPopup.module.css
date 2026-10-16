@@ -1,0 +1,118 @@
+/* tela cheia do palco 1920×1080, por cima do menu lateral (z 5) e da barra inferior (z 10) */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #222, #1b1b1b);
+  cursor: pointer;
+}
+
+.overlay > div {
+  cursor: default;
+}
+
+.abs {
+  position: absolute;
+}
+
+/* brilho roxo atrás da imagem (círculo de 345px com desfoque; SVG já inclui a margem) */
+.brilho {
+  position: absolute;
+  left: 80.7px;
+  top: 198.7px;
+  max-width: none;
+  mix-blend-mode: lighten;
+  pointer-events: none;
+}
+
+.painel {
+  position: absolute;
+  left: 318px;
+  top: 163px;
+  height: 591px;
+  border: 1px solid rgba(215, 113, 255, 0.36);
+  border-radius: 12px;
+  background-size: 100% 100%;
+}
+
+/* × no canto superior direito do painel (SVG de 48,4px com a margem do desfoque) */
+.fechar {
+  position: absolute;
+  top: 170.8px;
+  width: 48.4px;
+  height: 48.4px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.fechar img {
+  display: block;
+}
+
+.fechar:hover {
+  transform: scale(1.08);
+  opacity: 1;
+}
+
+.texto {
+  position: absolute;
+  top: 349px;
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.1;
+  color: #fff;
+  text-box: trim-both cap alphabetic;
+}
+
+.lista {
+  position: absolute;
+  top: 489px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lista img {
+  display: block;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  font-size: 20px;
+  line-height: 1.3;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* triângulo roxo apontando para a direita (SVG aponta para baixo) */
+.lista .marcador {
+  flex: none;
+  margin: 0 -3.18px;
+  transform: rotate(-90deg);
+}
+
+.imagem {
+  position: absolute;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.celular {
+  filter: drop-shadow(0 46px 29.3px rgba(0, 0, 0, 0.25));
+}
+
+.sala {
+  border-radius: 8px;
+}

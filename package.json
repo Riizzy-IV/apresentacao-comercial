@@ -13,7 +13,7 @@
     "preview": "vite preview",
     "app": "vite build && electron .",
     "dist": "vite build && electron-builder --win --publish never",
-    "release": "npm version patch -m \"Versão %s\" && git push --follow-tags && vite build && electron-builder --win --publish always"
+    "release": "npm version patch -m \"Versão %s\" && git push --follow-tags && node scripts/release-github.cjs criar && vite build && electron-builder --win --publish always && node scripts/release-github.cjs publicar"
   },
   "build": {
     "appId": "br.com.balzani.apresentacao",

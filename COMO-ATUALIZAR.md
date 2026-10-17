@@ -34,7 +34,9 @@ O `npm run release` precisa de um token do GitHub para publicar:
 1. Faça as mudanças e confira com `npm run dev` ou `npm run app`.
 2. Faça commit das mudanças (o `npm run release` não roda com alterações sem commit).
 3. Rode `npm run release`. Ele mesmo cria o commit "Versão x.y.z", a etiqueta `vx.y.z` e envia
-   para o GitHub antes de publicar (o GitHub exige a etiqueta para criar a Release).
+   para o GitHub antes de publicar (o GitHub exige a etiqueta para criar a Release). A Release é
+   criada como rascunho, recebe o instalador e só então é publicada
+   (`scripts/release-github.cjs`): se algo falhar no meio, os vendedores não recebem nada quebrado.
 
 ## Instalação nos PCs dos vendedores (só na primeira vez)
 

@@ -1,8 +1,14 @@
 # App da apresentação (Electron)
 
 A apresentação roda como aplicativo de Windows, sem depender de internet. Quando há internet,
-o app verifica sozinho se existe versão nova no GitHub (Releases deste repositório), baixa em
-segundo plano e instala ao ser fechado. Na próxima abertura, o vendedor já vê a versão nova.
+o app verifica sozinho se existe versão nova no GitHub (Releases deste repositório) e mostra um
+aviso com o botão **OK**. Ao clicar, a versão nova é baixada (o app segue funcionando, com o
+progresso na barra de tarefas); ao terminar, um segundo aviso com **OK** reinicia o app já
+atualizado. Se o vendedor fechar o app antes desse segundo OK, a atualização é instalada ao fechar.
+
+> Os avisos valem a partir da versão 1.0.3. Quem está na 1.0.2 ou anterior recebe a 1.0.3 do jeito
+> antigo (baixa em segundo plano e instala ao fechar, sem aviso); da atualização seguinte em diante,
+> aparecem os avisos.
 
 ## Comandos
 

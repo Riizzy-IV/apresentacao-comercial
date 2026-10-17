@@ -18,7 +18,12 @@ const PILARES = [
  * Texto + quatro pilares, foto à direita. Usado no passo 1 do Conceito (Figma "Tela 42")
  * e na abertura do Enxoval (Figma "Tela 51").
  */
-export function PilaresIntro({ titulo, foto }) {
+const TEXTO_PILARES = `É a construção estratégica de uma marca em cada detalhe — da sua essência à forma como se
+  posiciona e se comunica. Um processo que fortalece sua gestão e cria uma percepção positiva e
+  memorável junto ao público, sustentado por quatro pilares fundamentais.`;
+
+/** `pilares={false}`: só título, texto e faixa, centrados mais abaixo (Enxoval, Figma "Tela 51"). */
+export function PilaresIntro({ titulo, foto, texto = TEXTO_PILARES, pilares = true }) {
   const rootRef = useRef(null);
 
   useEffect(() => {
@@ -34,30 +39,28 @@ export function PilaresIntro({ titulo, foto }) {
   }, []);
 
   return (
-    <div ref={rootRef}>
+    <div ref={rootRef} className={pilares ? '' : styles.semPilares}>
       <img src="/img/estrategia/linha-topo.svg" alt="" width="1569" height="2" className={styles.linhaTopo} />
 
       <h1 className={styles.title} data-anim="title">{titulo}</h1>
 
       <div className={styles.content}>
-        <p className={styles.intro} data-anim="intro">
-          É a construção estratégica de uma marca em cada detalhe — da sua essência à forma como se
-          posiciona e se comunica. Um processo que fortalece sua gestão e cria uma percepção positiva e
-          memorável junto ao público, sustentado por quatro pilares fundamentais.
-        </p>
+        <p className={styles.intro} data-anim="intro">{texto}</p>
 
         <div className={styles.faixa} data-anim="faixa" />
 
-        <div className={styles.pilares}>
-          {PILARES.map((p, i) => (
-            <Fragment key={p.nome}>
-              {i > 0 && <img src="/img/marketing/divisor.svg" alt="" width="542" height="1" data-anim="pilar" />}
-              <p className={styles.pilar} data-anim="pilar">
-                <strong>{p.nome}:</strong> {p.texto}
-              </p>
-            </Fragment>
-          ))}
-        </div>
+        {pilares && (
+          <div className={styles.pilares}>
+            {PILARES.map((p, i) => (
+              <Fragment key={p.nome}>
+                {i > 0 && <img src="/img/marketing/divisor.svg" alt="" width="542" height="1" data-anim="pilar" />}
+                <p className={styles.pilar} data-anim="pilar">
+                  <strong>{p.nome}:</strong> {p.texto}
+                </p>
+              </Fragment>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className={styles.photo} data-anim="photo">

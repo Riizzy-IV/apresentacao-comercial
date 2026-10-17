@@ -58,9 +58,11 @@ const FORMULA_GROUPS = [
       { route: '/comercial/o-maior-desafio',      label: 'O maior desafio' },
       { route: '/comercial/assessoria-comercial', label: 'Assessoria comercial' },
       { route: '/comercial/entregaveis',          label: 'Entregáveis' },
+      { route: '/comercial/cliente-oculto',       label: 'Cliente oculto' },
       { route: '/comercial/cases',                label: 'Cases' },
       { route: '/comercial/operacao-pre-vendas',  label: 'Operação pré-vendas' },
       { route: '/comercial/onde-agiriamos',       label: 'Onde agiríamos' },
+      { route: '/comercial/roadmap',              label: 'Roadmap' },
       { route: '/encerramento',                   label: 'Encerramento', intro: true }, // slide final, tela cheia, fora do menu
     ],
   },

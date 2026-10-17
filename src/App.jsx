@@ -35,9 +35,11 @@ import EstruturaIdeal from './pages/Comercial/EstruturaIdeal/EstruturaIdeal';
 import MaiorDesafio from './pages/Comercial/MaiorDesafio/MaiorDesafio';
 import Assessoria from './pages/Comercial/Assessoria/Assessoria';
 import Roadmap from './pages/Comercial/Roadmap/Roadmap';
+import ClienteOculto from './pages/Comercial/ClienteOculto/ClienteOculto';
 import CasesComercial from './pages/Comercial/Cases/CasesComercial';
 import OperacaoPreVendas from './pages/Comercial/OperacaoPreVendas/OperacaoPreVendas';
 import OndeAgiriamos from './pages/Comercial/OndeAgiriamos/OndeAgiriamos';
+import RoadmapProjeto from './pages/Comercial/RoadmapProjeto/RoadmapProjeto';
 import Encerramento from './pages/Encerramento/Encerramento';
 import EmBreve from './pages/EmBreve/EmBreve';
 
@@ -102,9 +104,11 @@ export default function App() {
             <Route path="o-maior-desafio" element={<MaiorDesafio />} />
             <Route path="assessoria-comercial" element={<Assessoria />} />
             <Route path="entregaveis" element={<Roadmap />} />
+            <Route path="cliente-oculto" element={<ClienteOculto />} />
             <Route path="cases" element={<CasesComercial />} />
             <Route path="operacao-pre-vendas" element={<OperacaoPreVendas />} />
             <Route path="onde-agiriamos" element={<OndeAgiriamos />} />
+            <Route path="roadmap" element={<RoadmapProjeto />} />
             <Route path="*" element={<EmBreve embedded />} />
           </Route>
 

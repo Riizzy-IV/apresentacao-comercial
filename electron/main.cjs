@@ -2,9 +2,10 @@
 // - Serve o build do Vite (pasta dist) pelo protocolo interno app://, para que as rotas do
 //   React Router e os caminhos absolutos das imagens ("/img/...") funcionem como no navegador.
 // - Abre em tela cheia. F11 alterna a tela cheia; Esc sai dela.
-// - Atualização remota: ao abrir (com internet), procura versão nova nas Releases do GitHub,
-//   baixa em segundo plano e instala ao fechar o app. Sem internet, abre a versão instalada.
-const { app, BrowserWindow, protocol, net, Menu } = require('electron');
+// - Atualização remota: ao abrir (com internet), procura versão nova nas Releases do GitHub e
+//   pergunta ao vendedor (popup com OK) antes de baixar; ao terminar o download, outro popup
+//   reinicia o app na versão nova. Sem internet, abre a versão instalada.
+const { app, BrowserWindow, protocol, net, Menu, dialog } = require('electron');
 const path = require('node:path');
 const fs = require('node:fs');
 const { pathToFileURL } = require('node:url');
@@ -47,6 +48,45 @@ function criarJanela() {
   win.loadURL('app://apresentacao/');
 }
 
+/**
+ * Atualização com confirmação: nada é baixado sem o OK do vendedor.
+ * 1) versão nova encontrada → popup → OK baixa (progresso na barra de tarefas, o app segue funcionando);
+ * 2) download concluído → popup → OK reinicia já na versão nova.
+ * Se o app for fechado antes do segundo OK, a atualização baixada é instalada ao fechar.
+ */
+function configurarAtualizacao() {
+  autoUpdater.autoDownload = false;
+  autoUpdater.autoInstallOnAppQuit = true;
+
+  const aviso = opcoes => dialog.showMessageBox(win, { type: 'info', buttons: ['OK'], defaultId: 0, noLink: true, ...opcoes });
+
+  autoUpdater.on('update-available', async info => {
+    await aviso({
+      title: 'Atualização disponível',
+      message: `Nova versão da apresentação disponível (${info.version}).`,
+      detail: 'Clique em OK para baixar. Você pode continuar usando o app enquanto isso.',
+    });
+    autoUpdater.downloadUpdate().catch(() => win?.setProgressBar(-1));
+  });
+
+  autoUpdater.on('download-progress', p => win?.setProgressBar(p.percent / 100));
+
+  autoUpdater.on('update-downloaded', async info => {
+    win?.setProgressBar(-1);
+    await aviso({
+      title: 'Atualização pronta',
+      message: `A versão ${info.version} foi baixada.`,
+      detail: 'Clique em OK para reiniciar a apresentação já atualizada.',
+    });
+    // silencioso (o instalador não abre telas) e reabre o app ao terminar
+    autoUpdater.quitAndInstall(true, true);
+  });
+
+  // sem internet ou GitHub fora do ar: segue com a versão atual
+  autoUpdater.on('error', () => win?.setProgressBar(-1));
+  autoUpdater.checkForUpdates().catch(() => {});
+}
+
 app.on('second-instance', () => {
   if (!win) return;
   if (win.isMinimized()) win.restore();
@@ -68,10 +108,7 @@ app.whenReady().then(() => {
 
   criarJanela();
 
-  if (app.isPackaged) {
-    autoUpdater.on('error', () => {}); // sem internet ou GitHub fora do ar: segue com a versão atual
-    autoUpdater.checkForUpdatesAndNotify().catch(() => {});
-  }
+  if (app.isPackaged) configurarAtualizacao();
 });
 
 app.on('window-all-closed', () => app.quit());

@@ -5,6 +5,16 @@
   background: linear-gradient(to bottom, var(--color-navy-800), var(--color-navy-900));
 }
 
+/* mesmo degradê do fundo, base da mistura das ondas (estendido para os lados em telas mais largas que 16:9) */
+.base {
+  position: absolute;
+  left: -2000px;
+  right: -2000px;
+  top: 0;
+  height: 1080px;
+  background: linear-gradient(to bottom, var(--color-navy-800), var(--color-navy-900));
+}
+
 /* contorno desfocado do logo, cortado pelo canto superior direito */
 .contorno {
   position: absolute;

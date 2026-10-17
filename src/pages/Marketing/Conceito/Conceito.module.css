@@ -43,6 +43,15 @@
   text-box: trim-both cap alphabetic;
 }
 
+/* sem pilares (Enxoval, Figma "Tela 51"): bloco começa em y=380, texto 16px abaixo do título */
+.semPilares .title {
+  top: 380px;
+}
+
+.semPilares .content {
+  top: 428px;
+}
+
 /* faixa em degradê laranja → azul */
 .faixa {
   width: 351px;

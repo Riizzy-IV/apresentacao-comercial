@@ -24,6 +24,9 @@ export default function Encerramento() {
     <section className={styles.root} ref={rootRef}>
       <Canvas>
         <div data-anim="fundo">
+          {/* azul-marinho dentro do grupo: durante o fade (opacidade < 1) o "overlay" só mistura com o que
+              está no próprio grupo; sem esta camada as ondas apareciam cinza até o fade terminar */}
+          <div className={styles.base} />
           {/* ondas do Figma (PNG com transparência) em "overlay" sobre o fundo azul-marinho */}
           <StageImage src="/img/encerramento/ondas.png" x={0} y={-2} width={1920} height={1083}
             style={{ mixBlendMode: 'overlay' }} />

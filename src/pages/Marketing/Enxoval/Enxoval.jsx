@@ -38,10 +38,13 @@ function SiteAoVivo({ url, reserva }) {
     return () => { vivo = false; ctrl.abort(); clearTimeout(timer); window.removeEventListener('offline', off); };
   }, [url]);
 
-  return online
-    ? <iframe src={url} title="Landing page" className={styles.site} />
-    : <img src={reserva} alt="" className={styles.print} draggable={false} />;
+  if (online) return <iframe src={url} title="Landing page" className={styles.site} />;
+  return reserva
+    ? <img src={reserva} alt="" className={styles.print} draggable={false} />
+    : <p className={styles.siteOffline}>Conecte-se à internet para ver o site</p>;
 }
+
+const site = (url, reserva) => () => <SiteAoVivo url={url} reserva={reserva} />;
 
 /**
  * Vídeo dentro do painel (fica no app, roda offline), com o botão próprio de ampliar/reduzir no canto:
@@ -79,7 +82,7 @@ function VideoPainel({ src, drive, capa }) {
               allow="autoplay; fullscreen" className={styles.video} />
           : (
             <div className={styles.videoOffline}>
-              <img src={capa} alt="" draggable={false} />
+              {capa && <img src={capa} alt="" draggable={false} />}
               <p>Conecte-se à internet para assistir ao vídeo</p>
             </div>
           )
@@ -106,32 +109,83 @@ function VideoPainel({ src, drive, capa }) {
 const video = (src, capa) => () => <VideoPainel src={src} capa={capa} />;
 const videoDrive = (id, capa) => () => <VideoPainel drive={id} capa={capa} />;
 
-// book digital: páginas do PDF (convertidas em imagem) uma embaixo da outra, rolando no painel
-const PAGINAS_BOOK = Array.from({ length: 46 }, (_, i) =>
-  `/img/marketing/enxoval/book/pagina-${String(i + 1).padStart(2, '0')}.webp`);
-const Book = () => (
+// book digital: páginas do PDF (convertidas em imagem com 1800 px de largura) uma embaixo da outra,
+// rolando no painel. `alturas` = altura de cada página, ou um número só quando todas são iguais.
+const book = (pasta, total, alturas) => () => (
   <div className={styles.book}>
-    {PAGINAS_BOOK.map((src, i) => (
-      <img key={src} src={src} alt={`Página ${i + 1}`} width="1800" height="1200"
-        loading={i < 2 ? 'eager' : 'lazy'} className={styles.bookPagina} draggable={false} />
+    {Array.from({ length: total }, (_, i) => {
+      const src = `/img/marketing/enxoval/${pasta}/pagina-${String(i + 1).padStart(2, '0')}.webp`;
+      return (
+        <img key={src} src={src} alt={`Página ${i + 1}`} width="1800"
+          height={Array.isArray(alturas) ? alturas[i] : alturas}
+          loading={i < 2 ? 'eager' : 'lazy'} className={styles.bookPagina} draggable={false} />
+      );
+    })}
+  </div>
+);
+
+// mídia off: os 4 mockups de cada projeto (caixas de 1459×816 do Figma, em 1,25×), um embaixo do outro
+const midiaOff = projeto => () => (
+  <div className={styles.book}>
+    {[1, 2, 3, 4].map(n => (
+      <img key={n} src={`/img/marketing/enxoval/midia-off/${projeto}-${n}.jpg`} alt={`Mockup ${n}`}
+        width="1824" height="1020" loading={n < 2 ? 'eager' : 'lazy'} className={styles.bookPagina} draggable={false} />
     ))}
   </div>
 );
 
+// Olive Garden: capa e contracapa avulsas, o miolo em páginas duplas
+const ALTURAS_OLIVE = Array.from({ length: 31 }, (_, i) => (i === 0 || i === 30 ? 1484 : 766));
+
 // peças do enxoval (abas). Cada peça mostra o seu empreendimento no título.
 // `Conteudo: null` = peça ainda sem material ("Em breve")
 const PROJETOS = [
-  { aba: 'Landing Page', nome: 'Chamoun Riviera', cliente: 'Chamoun Incorporadora',
-    Conteudo: () => <SiteAoVivo url="https://chamounriviera.com.br/" reserva="/img/marketing/enxoval/chamoun-riviera.jpg" /> },
-  { aba: 'Vídeo Conceito', nome: 'Porto Belo Lagos', cliente: 'JTA Empreendimentos',
-    // tocado direto do Google Drive (arquivo grande demais para ir no app)
-    Conteudo: videoDrive('1JEnotsfn-7dYl5HoP_LDOZI2-yM4Sp8S', '/img/marketing/enxoval/porto-belo-lagos-capa.jpg') },
-  { aba: 'Book', nome: 'Areias do Sul', Conteudo: Book },
-  { aba: 'Mídia Off', nome: '', Conteudo: null },
+  { aba: 'Landing Page', opcoes: [
+    { nome: 'Chamoun Riviera', cliente: 'Chamoun Incorporadora',
+      Conteudo: site('https://chamounriviera.com.br/', '/img/marketing/enxoval/chamoun-riviera.jpg') },
+    { nome: 'Areias do Sul', Conteudo: site('https://areias-do-sul.vercel.app/') },
+    { nome: 'Léman View',    Conteudo: site('https://lemanview.com.br/') },
+    { nome: 'Nex Monaco',    Conteudo: site('https://nex-monaco.vercel.app/monaco') },
+  ] },
+  // vídeos tocados direto do Google Drive (arquivos grandes demais para ir no app)
+  { aba: 'Vídeo Conceito', opcoes: [
+    { nome: 'Porto Belo Lagos', cliente: 'JTA Empreendimentos',
+      Conteudo: videoDrive('1JEnotsfn-7dYl5HoP_LDOZI2-yM4Sp8S', '/img/marketing/enxoval/porto-belo-lagos-capa.jpg') },
+    { nome: 'Chamoun Riviera', cliente: 'Chamoun Incorporadora',
+      Conteudo: videoDrive('11Y_Upr1Y0O3HbtnaSQ-Y12HLQ1qtgGkG') },
+    { nome: 'Vale das Montanhas', cliente: 'Edifica Real',
+      Conteudo: videoDrive('1bqkWfgpZwemlsLRwzQ35hUVt2rWtnjI2') },
+    { nome: 'Cipasa Urbanismo', Conteudo: videoDrive('1ExqKAoQwB7XysGX5bhk6apzm6zc264NH') },
+  ] },
+  { aba: 'Book', opcoes: [
+    { nome: 'Areias do Sul',   Conteudo: book('book', 46, 1200) },
+    { nome: 'Chamoun Riviera', cliente: 'Chamoun Incorporadora', Conteudo: book('book-chamoun', 51, 900) },
+    { nome: 'Léman View',      Conteudo: book('book-leman', 42, 1013) },
+    { nome: 'Olive Garden',    Conteudo: book('book-olive', 31, ALTURAS_OLIVE) },
+  ] },
+  { aba: 'Mídia Off', opcoes: [
+    { nome: 'ACF Lucas', Conteudo: midiaOff('acf-lucas') },
+    { nome: 'Arvin',     Conteudo: midiaOff('arvin') },
+    { nome: 'Madrid',    Conteudo: midiaOff('madrid') },
+  ] },
+];
+
+// carregados escondidos já na introdução, para o passo "Cases" abrir com o cache quente
+const PREAQUECER = [
+  'https://chamounriviera.com.br/',
+  'https://drive.google.com/file/d/1JEnotsfn-7dYl5HoP_LDOZI2-yM4Sp8S/preview',
 ];
 
 /** Passo 1 (Figma "Tela 51"): texto + quatro pilares, foto à direita. */
-const Intro = () => <PilaresIntro titulo="Enxoval" foto="/img/marketing/enxoval-intro.jpg" />;
+const Intro = () => (
+  <>
+    <PilaresIntro titulo="Enxoval" foto="/img/marketing/enxoval-intro.jpg" pilares={false}
+      texto="O enxoval de lançamento imobiliário é o conjunto de materiais, peças de marketing para divulgar, posicionar e vender um novo empreendimento desde a fase de pré-lançamento até a comercialização de todas as unidades." />
+    {navigator.onLine && PREAQUECER.map(url => (
+      <iframe key={url} src={url} title="" aria-hidden="true" tabIndex={-1} className={styles.preaquecer} />
+    ))}
+  </>
+);
 
 /** Passo 2 (/marketing/enxoval/projetos, Figma "Tela 14"): abas com a landing page de cada projeto. */
 const ProjetosEnxoval = () => (

@@ -1,15 +1,18 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import VivaClub from './projetos/VivaClub';
+import BelaVista from './projetos/BelaVista';
+import OliveGarden from './projetos/OliveGarden';
+import SolarDoCais from './projetos/SolarDoCais';
+import Unica from './projetos/Unica';
 import styles from './Projetos.module.css';
 
 // projetos de conceito (abas). `Conteudo: null` = ainda sem layout no Figma
 const PROJETOS = [
-  { nome: 'Areias do Sul',        Conteudo: null },
-  { nome: 'Bella Vida Graminha',  Conteudo: null },
-  { nome: 'Chamoun Riviera',      Conteudo: null },
-  { nome: 'Helena Bay Residence', Conteudo: null },
-  { nome: 'Léman View',           Conteudo: null },
+  { nome: 'Unica',         Conteudo: Unica },
+  { nome: 'Bela Vista',    Conteudo: BelaVista },
+  { nome: 'Olive Garden',  Conteudo: OliveGarden },
+  { nome: 'Solar do Cais', Conteudo: SolarDoCais },
   { nome: 'VivaClub', cliente: 'Luiz Targa Engenharia', Conteudo: VivaClub },
 ];
 /**
@@ -17,18 +20,30 @@ const PROJETOS = [
  * o brandbook num painel branco com rolagem. As setas laterais trocam de projeto.
  * Também usado no Enxoval e na Performance (`projetos` = outra lista; `classes` = ajustes de
  * estilo por tela, somados às classes padrão: `abas`, `painel`, `nome`, `cliente`).
- * Cada item pode ter `aba` = texto do botão, quando for diferente do nome mostrado no título.
+ * Cada item pode ter `aba` = texto do botão, quando for diferente do nome mostrado no título,
+ * e `opcoes` = vários projetos na mesma aba ({ nome, cliente, Conteudo }), escolhidos por botões
+ * na linha do título. As opções carregam todas juntas (escondidas) para a troca ser instantânea.
  */
 export default function Projetos({ projetos = PROJETOS, classes = {} }) {
   // abre no primeiro projeto com layout
-  const [atual, setAtual] = useState(() => Math.max(0, projetos.findIndex(p => p.Conteudo)));
+  const [atual, setAtual] = useState(() => Math.max(0, projetos.findIndex(p => p.Conteudo || p.opcoes)));
+  const [opcao, setOpcao] = useState(0);
+  // versão de cada opção: a que sai de cena é recriada escondida (para vídeo tocando, volta ao topo)
+  const [versoes, setVersoes] = useState({});
   const rootRef = useRef(null);
   const contentRef = useRef(null);
   const painelRef = useRef(null);
   const first = useRef(true);
-  const { nome, cliente, Conteudo } = projetos[atual];
+  const { opcoes } = projetos[atual];
+  const { nome, cliente, Conteudo } = opcoes ? opcoes[opcao] : projetos[atual];
 
-  const ir = delta => setAtual(i => (i + delta + projetos.length) % projetos.length);
+  const trocar = i => { setAtual(i); setOpcao(0); setVersoes({}); };
+  const ir = delta => trocar((atual + delta + projetos.length) % projetos.length);
+  const escolher = i => {
+    if (i === opcao) return;
+    setVersoes(v => ({ ...v, [opcao]: (v[opcao] ?? 0) + 1 }));
+    setOpcao(i);
+  };
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -50,7 +65,7 @@ export default function Projetos({ projetos = PROJETOS, classes = {} }) {
         .from('[data-anim="painel"]', { opacity: 0, y: 30, duration: 0.8 }, 0.1);
     }, contentRef);
     return () => ctx.revert();
-  }, [atual]);
+  }, [atual, opcao]);
 
   return (
     <div ref={rootRef}>
@@ -59,20 +74,37 @@ export default function Projetos({ projetos = PROJETOS, classes = {} }) {
       <nav className={`${styles.abas} ${classes.abas ?? ''}`}>
         {projetos.map((p, i) => (
           <button key={i} className={`${styles.aba} ${i === atual ? styles.abaAtiva : ''}`}
-            onClick={() => setAtual(i)} data-anim="aba">
+            onClick={() => trocar(i)} data-anim="aba">
             {p.aba ?? p.nome}
           </button>
         ))}
       </nav>
 
+      {opcoes && (
+        <nav className={styles.opcoes}>
+          {opcoes.map((o, i) => (
+            <button key={i} className={`${styles.aba} ${i === opcao ? styles.abaAtiva : ''}`}
+              onClick={() => escolher(i)}>
+              {o.nome}
+            </button>
+          ))}
+        </nav>
+      )}
+
       <div ref={contentRef} key={atual}>
-        <div className={styles.titulo} data-anim="titulo">
+        <div className={styles.titulo} data-anim="titulo" key={opcao}>
           <p className={`${styles.nome} ${classes.nome ?? ''}`}>{nome}</p>
           {cliente && <p className={`${styles.cliente} ${classes.cliente ?? ''}`}>{cliente}</p>}
         </div>
 
         <div ref={painelRef} className={`${styles.painel} ${classes.painel ?? ''}`} data-anim="painel">
-          {Conteudo ? <Conteudo /> : <p className={styles.emBreve}>Em breve</p>}
+          {opcoes
+            ? opcoes.map((o, i) => (
+              <div key={`${i}-${versoes[i] ?? 0}`} className={styles.opcao} hidden={i !== opcao}>
+                {o.Conteudo ? <o.Conteudo /> : <p className={styles.emBreve}>Em breve</p>}
+              </div>
+            ))
+            : Conteudo ? <Conteudo /> : <p className={styles.emBreve}>Em breve</p>}
         </div>
       </div>
 

@@ -1,0 +1,207 @@
+/* fontes do Figma indisponíveis: Proxima Nova Wide → Zalando Sans Expanded; Proxima Nova e Aktiv Grotesk →
+   fonte principal (a página herda a Figtree do Brandbook, por isso a fonte é dada em cada bloco) */
+.wide {
+  font-family: var(--font-expanded);
+}
+
+/* chamada sobre a foto de folhagem. Figma: 48px; a Zalando Sans Expanded é mais larga que a Proxima Nova Wide,
+   então fica menor para manter as 3 linhas do Figma acima da linha branca (y=642) */
+.chamada {
+  position: absolute;
+  left: 699px;
+  top: 413px;
+  width: 522px;
+  margin: 0;
+  font-family: var(--font-expanded);
+  font-size: 42px;
+  font-weight: 400;
+  color: #fff;
+}
+
+/* texto do conceito (Proxima Nova Wide Light, destaques em Medium) */
+.conceito {
+  position: absolute;
+  left: 608px;
+  top: 1172px;
+  width: 704px;
+  font-family: var(--font-expanded);
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: -0.16px;
+  color: #000;
+}
+
+.conceito p {
+  margin: 0 0 29px;
+}
+
+.conceito p:last-child {
+  margin-bottom: 0;
+}
+
+.conceito strong {
+  font-weight: 500;
+}
+
+/* rótulos em Aktiv Grotesk Light */
+.rotulo,
+.rotuloFixo {
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 0.48px;
+  color: #555;
+  text-box: trim-both cap alphabetic;
+}
+
+.rotulo {
+  position: absolute;
+  width: 186px;
+}
+
+.tipografia {
+  position: absolute;
+  left: 240px;
+  top: 1825px;
+  width: 1440px;
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+.tipoTitulo {
+  width: 210px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.nomeFamilia {
+  margin: 0;
+  font-family: var(--font-main);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: 0.96px;
+  color: #000;
+  text-box: trim-both cap alphabetic;
+}
+
+.pesos {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 39px;
+  font-family: var(--font-main);
+  font-size: 40px;
+  letter-spacing: 0.8px;
+  color: #555;
+}
+
+.colunaPesos {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.colunaPesos p {
+  margin: 0;
+  white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}
+
+/* linha vertical dourada de 212px */
+.linhaVertical {
+  flex: none;
+  height: 212px;
+  margin-left: -1px;
+  border-left: 1px solid #b79354;
+}
+
+.alfabetos {
+  width: 487px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  font-family: var(--font-main);
+  font-size: 32px;
+  letter-spacing: 11.2px;
+  color: #555;
+}
+
+.alfabetos p {
+  margin: 0;
+  white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}
+
+/* paleta: amostras com nome e hex embaixo */
+.paleta {
+  position: absolute;
+  left: 237px;
+  top: 2337px;
+  width: 1443px;
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+.amostras {
+  display: flex;
+  gap: 32px;
+}
+
+.cor {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.amostra {
+  height: 277px;
+  border-radius: 4px;
+}
+
+.legenda {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-main);
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 0.48px;
+  color: #000;
+  white-space: nowrap;
+}
+
+.legenda p {
+  margin: 0;
+  text-box: trim-both cap alphabetic;
+}
+
+.hex {
+  opacity: 0.5;
+}
+
+/* títulos de seção centrados (Proxima Nova Wide Light, destaque em Medium) */
+.secao {
+  position: absolute;
+  left: 954.5px;
+  width: 1439px;
+  margin: 0;
+  transform: translateX(-50%);
+  font-family: var(--font-expanded);
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 0.48px;
+  color: #000;
+  text-align: center;
+  text-box: trim-both cap alphabetic;
+}
+
+.secao strong {
+  font-weight: 500;
+}

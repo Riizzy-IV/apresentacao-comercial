@@ -1,0 +1,108 @@
+/* Figma: Proxima Nova Extra Wide (indisponível) → Zalando Sans Expanded */
+.titulo {
+  position: absolute;
+  left: 407px;
+  top: 155px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 13px;
+  font-family: var(--font-expanded);
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.titulo h1,
+.titulo p {
+  margin: 0;
+  text-box: trim-both cap alphabetic;
+}
+
+.titulo h1 {
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--color-orange);
+}
+
+.titulo p {
+  font-size: 24px;
+  font-weight: 400;
+  color: #2f79a8;
+}
+
+/* imobiliárias: mesmo botão do menu dos passos */
+.abas {
+  position: absolute;
+  left: 995px;
+  top: 160px;
+  display: flex;
+  gap: 24px;
+}
+
+.aba {
+  height: 54px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+
+.aba:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.abaAtiva,
+.abaAtiva:hover {
+  background: var(--color-orange);
+  color: #00243a;
+  cursor: default;
+}
+
+/* relatório rolando por dentro do painel (sem barra de rolagem visível) */
+.painel {
+  position: absolute;
+  left: 407px;
+  top: 263px;
+  width: 1195px;
+  height: 696px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  scrollbar-width: none;
+}
+
+.painel::-webkit-scrollbar {
+  display: none;
+}
+
+.painel img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.emBreve {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.4;
+}

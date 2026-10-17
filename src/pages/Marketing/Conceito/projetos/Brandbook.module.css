@@ -1,0 +1,309 @@
+/* página de 1920px reduzida para a largura do painel (1479px). `zoom` (e não transform) para a
+   altura reduzida valer na rolagem do painel */
+.pagina {
+  position: relative;
+  width: 1920px;
+  overflow: hidden;
+  background: #fff;
+  zoom: calc(1479 / 1920);
+  font-family: 'Figtree', var(--font-main);
+}
+
+/* fontes do Figma indisponíveis no app */
+.fonteArea {
+  font-family: var(--font-main);
+}
+
+.fonteSerifa {
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.fonteFigtree {
+  font-family: 'Figtree', var(--font-main);
+}
+
+/* recorte da caixa do texto (text-box-trim do Figma) */
+.aparar {
+  text-box: trim-both cap alphabetic;
+}
+
+.abs {
+  position: absolute;
+  max-width: none;
+}
+
+.foto {
+  position: absolute;
+  display: block;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* título de seção entre duas linhas */
+.secao {
+  width: 1194px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+.secaoAbs {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* linha de 1px desenhada acima do ponto em que fica (altura zero no Figma) */
+.secao img,
+.divisor {
+  display: block;
+  max-width: none;
+  margin-top: -1px;
+}
+
+.secao p {
+  width: 100%;
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.3;
+  color: #000;
+  text-align: center;
+}
+
+.rotulo {
+  position: absolute;
+  margin: 0;
+  transform: translateX(-50%);
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: 4.2px;
+  color: #000;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}
+
+/* paleta: título + amostras */
+.paleta {
+  position: absolute;
+  left: 0;
+  width: 1919px;
+  padding: 175px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 120px;
+}
+
+.amostras {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.linhaAmostras {
+  display: flex;
+  gap: 32px;
+}
+
+.amostraGrande,
+.amostra,
+.amostraApoio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.amostraGrande {
+  height: 459px;
+}
+
+.amostra {
+  width: 459px;
+  height: 416px;
+}
+
+.amostraApoio {
+  height: 235px;
+}
+
+.amostras p {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Figtree', var(--font-main);
+  font-size: 24px;
+  font-weight: 300;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}
+
+.amostras strong {
+  font-weight: 700;
+}
+
+/* família tipográfica */
+.tipografia {
+  position: absolute;
+  left: 0;
+  width: 1919px;
+  padding: 175px 239px;
+  display: flex;
+  justify-content: center;
+  background: #f5f5f5;
+}
+
+.tipografiaConteudo {
+  width: 1441px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 115px;
+}
+
+.familias {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 99px;
+}
+
+.familia {
+  display: flex;
+  align-items: flex-start;
+  gap: 70px;
+  color: #333;
+}
+
+.nomeFamilia {
+  width: 189px;
+  margin: 0;
+  flex: none;
+  font-size: 48px;
+  letter-spacing: 0.96px;
+  white-space: nowrap;
+}
+
+.pesos {
+  width: 582px;
+  flex: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  gap: 45px 46px;
+  white-space: nowrap;
+}
+
+/* linha vertical dourada de 114px entre os pesos e o alfabeto */
+.linhaVertical {
+  flex: none;
+  height: 114px;
+  margin-left: -1px;
+  border-left: 1px solid #b79354;
+}
+
+.alfabeto {
+  margin: 0;
+  font-size: 32px;
+  letter-spacing: 11.2px;
+  white-space: nowrap;
+}
+
+/* regras e proibições */
+.aviso {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 19.508px;
+}
+
+.aviso.centro {
+  transform: translateX(-50%);
+}
+
+.aviso img {
+  display: block;
+  flex: none;
+}
+
+.aviso p {
+  margin: 0;
+  font-size: 15.073px;
+  color: #000;
+  white-space: nowrap;
+}
+
+.regra {
+  position: absolute;
+}
+
+.regraImg {
+  position: absolute;
+  inset: 0;
+}
+
+.regraImg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+/* "não rotacionar": logo girado no centro da caixa */
+.regraImg.girada {
+  inset: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(var(--graus));
+}
+
+/* logotipo em grupos: caixa posicionada por inset (em %); o SVG ocupa a caixa inteira */
+.logoGrupos {
+  position: absolute;
+  overflow: hidden;
+}
+
+.grupo {
+  position: absolute;
+}
+
+.grupo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+/* rodapé azul */
+.obrigado {
+  position: absolute;
+  left: 0;
+  width: 1920px;
+  height: 618px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 82px;
+  background: #103655;
+}
+
+.obrigado p {
+  margin: 0;
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: 1.12px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.obrigado img {
+  display: block;
+  max-width: none;
+}

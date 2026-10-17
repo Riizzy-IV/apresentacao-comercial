@@ -36,6 +36,24 @@
   color: var(--color-navy-800);
 }
 
+/* projetos dentro da mesma aba: na linha do título, alinhados à direita do painel */
+.opcoes {
+  position: absolute;
+  right: 46px;
+  top: 124px;
+  display: flex;
+  gap: 10px;
+}
+
+/* cada opção ocupa o painel inteiro; só a escolhida aparece (as outras seguem carregando) */
+.opcao {
+  height: 100%;
+}
+
+.opcao[hidden] {
+  display: none;
+}
+
 /* Figma: Proxima Nova Extra Wide Medium (indisponível) → Zalando Sans Expanded */
 .titulo {
   position: absolute;

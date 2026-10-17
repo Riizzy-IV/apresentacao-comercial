@@ -1,0 +1,176 @@
+/* linhas de 1px como bordas: o navegador sempre desenha borda com pelo menos 1 pixel físico,
+   então elas não somem quando a tela é reduzida (imagens de 1px sumiam em alguns pontos) */
+
+/* linha pontilhada da linha do tempo (y=170, desenhada 1px acima como no Figma) */
+.linhaTempo {
+  position: absolute;
+  left: 351px;
+  top: 169px;
+  width: 1569px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.3);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+/* trilhos verticais de cada marco até a barra inferior, um por trecho (à esquerda do x, como no Figma) */
+.trilho {
+  position: absolute;
+  margin-left: -1px;
+  border-left: 1px solid #2f79a8;
+  transform-origin: top center;
+  pointer-events: none;
+}
+
+/* marco: etiqueta (y=59), haste (y=89→156) e ponto (y=156), centrados no x do marco */
+.marco {
+  position: absolute;
+  top: 59px;
+  width: 0;
+}
+
+.marco img {
+  position: absolute;
+  max-width: none;
+}
+
+.etiqueta {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 30px;
+  padding: 5px 30px 4px 29px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #003556;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #ededed;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.haste {
+  position: absolute;
+  left: -1px;
+  top: 30px;
+  height: 67px;
+  border-left: 1px solid #2f79a8;
+}
+
+.anel {
+  left: -15px;
+  top: 97px;
+}
+
+.ponto {
+  left: -7px;
+  top: 105px;
+}
+
+/* seta no fim da linha do tempo: SVG de 54px ocupando a caixa de 41.8px do Figma */
+.seta {
+  position: absolute;
+  left: 1852.8px;
+  top: 142.8px;
+  max-width: none;
+}
+
+/* cada card num grupo na origem: a animação de entrada move tudo junto sem mudar as coordenadas */
+.grupo {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* card de vidro */
+.card,
+.estrategia {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(9.8px);
+  -webkit-backdrop-filter: blur(9.8px);
+}
+
+/* Figma: Proxima Nova Extra Wide Regular (indisponível) → Zalando Sans Expanded */
+.titulo,
+.subtitulo,
+.estrategia p {
+  margin: 0;
+  font-family: var(--font-expanded);
+  font-weight: 400;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.titulo {
+  position: absolute;
+  top: 234px;
+  font-size: 30px;
+  color: #afd2df;
+}
+
+.subtitulo {
+  position: absolute;
+  font-size: 20px;
+  color: #2f79a8;
+}
+
+.linhaTitulo {
+  position: absolute;
+  top: 290px;
+  max-width: none;
+}
+
+.lista {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* divisor de 1px desenhado acima do ponto em que fica (altura zero no Figma) */
+.lista img {
+  display: block;
+  max-width: none;
+  margin-top: -1px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  font-size: 16px;
+  line-height: 1.3;
+  color: #fff;
+}
+
+/* seta laranja apontando para a direita (SVG aponta para baixo) */
+.item .marcador {
+  flex: none;
+  margin: 0 -3.18px;
+  transform: rotate(-90deg);
+}
+
+.estrategia {
+  left: 467px;
+  top: 867px;
+  width: 1324px;
+  height: 104px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 29px;
+}
+
+.estrategia p {
+  font-size: 30px;
+  color: #afd2df;
+}

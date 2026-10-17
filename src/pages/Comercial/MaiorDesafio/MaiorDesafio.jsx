@@ -13,7 +13,7 @@ export default function MaiorDesafio() {
         .from('[data-anim="bg"]',    { opacity: 0, duration: 1.4, ease: 'power2.out' }, 0)
         .from('[data-anim="title"]', { opacity: 0, y: 20, duration: 0.7, stagger: 0.12 }, 0.2)
         .from('[data-anim="texto"]', { opacity: 0, x: -20, duration: 0.7 }, 0.6)
-        .from('[data-anim="nota"]',  { y: -120, duration: 0.8, ease: 'back.out(1.2)' }, 0.9);
+        .from('[data-anim="nota"]',  { opacity: 0, y: -30, duration: 0.8, ease: 'back.out(1.2)' }, 0.9);
     }, rootRef);
     return () => ctx.revert();
   }, []);
@@ -40,7 +40,7 @@ export default function MaiorDesafio() {
         </p>
       </div>
 
-      {/* nota pendurada no topo da tela */}
+      {/* nota solta à direita do título */}
       <aside className={styles.nota} data-anim="nota">
         <span className={styles.iconeCaixa}>
           <span className={styles.icone}>

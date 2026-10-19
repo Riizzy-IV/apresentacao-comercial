@@ -31,7 +31,8 @@ export default function Roadmap() {
   return (
     <div ref={rootRef}>
       <FormulaBackground />
-      <Entregaveis sub="Assessoria comercial" colunas={COLUNAS} mockup={null} />
+      {/* linha pontilhada abaixo do menu dos passos da Assessoria comercial (como no Conceito e no Enxoval) */}
+      <Entregaveis sub="Assessoria comercial" colunas={COLUNAS} mockup={null} linhaTop={73} />
     </div>
   );
 }

@@ -1,8 +1,206 @@
-/* abas no canto superior direito (nos cases da Estratégia ficam à esquerda) */
+/* abas abaixo da linha do topo, alinhadas ao cartão do logo (o topo direito é do menu dos passos) */
 .tabs {
   position: absolute;
-  left: 1093px;
-  top: 56px;
+  left: 419px;
+  top: 150px;
   display: flex;
   gap: 24px;
+}
+
+.abs {
+  position: absolute;
+  display: block;
+  max-width: none;
+}
+
+/* logo do cliente num cartão branco */
+.logoCartao {
+  position: absolute;
+  left: 419px;
+  top: 285px;
+  width: 213px;
+  height: 109px;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.logo {
+  position: absolute;
+  display: block;
+  max-width: none;
+  object-fit: contain;
+}
+
+/* Figma: Proxima Nova Extra Wide (indisponível) → Zalando Sans Expanded, um pouco menor (40 → 37, 24 → 22) */
+.titulo {
+  position: absolute;
+  left: 653px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  font-family: var(--font-expanded);
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.nome,
+.cidade {
+  margin: 0;
+  text-box: trim-both cap alphabetic;
+}
+
+.nome {
+  font-size: 37px;
+  font-weight: 700;
+  color: var(--color-orange);
+}
+
+.cidade {
+  font-size: 22px;
+  font-weight: 400;
+  color: #2f79a8;
+}
+
+/* blocos de texto: em coluna (Prime e Nexus) ou soltos (Incorp, posição no style) */
+.coluna {
+  position: absolute;
+  left: 423px;
+  top: 476px;
+  width: 667px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 26px;
+}
+
+.bloco {
+  width: 667px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 19px;
+}
+
+.pill {
+  margin: 0;
+  padding: 10px;
+  border-radius: 4px;
+  background: var(--color-orange);
+  font-family: var(--font-expanded);
+  font-size: 15px;
+  line-height: 1.1;
+  color: #fff;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-box: trim-both cap alphabetic;
+}
+
+.texto {
+  width: 100%;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.3;
+  color: #fff;
+  text-box: trim-both cap alphabetic;
+}
+
+.resultado {
+  width: 574px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.resultadoTitulo,
+.resultadoTexto {
+  margin: 0;
+  line-height: 1.3;
+  text-box: trim-both cap alphabetic;
+}
+
+.resultadoTitulo {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-orange);
+}
+
+.resultadoTexto {
+  font-size: 24px;
+  color: #fff;
+}
+
+.destaque {
+  font-weight: 700;
+  color: var(--color-orange);
+}
+
+/* cartão de vidro: azul translúcido desfocado, brilho branco em cima e laranja embaixo */
+.cartao {
+  position: absolute;
+  width: 400.909px;
+  height: 377.182px;
+  border: 0.818px solid #fff;
+  border-radius: 90px;
+  background: rgba(1, 61, 129, 0.6);
+  backdrop-filter: blur(var(--desfoque));
+  -webkit-backdrop-filter: blur(var(--desfoque));
+  box-shadow:
+    0 -65.455px 81.818px -65.455px rgba(255, 255, 255, 0.3),
+    0 -65.455px 81.818px -65.455px rgba(255, 255, 255, 0.3),
+    inset 0 57.273px 57.273px -49.091px rgba(255, 255, 255, 0.5),
+    inset 0 -49.091px 32.727px -40.909px rgba(255, 255, 255, 0.25),
+    inset 0 -121.909px 49.091px -73.636px rgba(255, 97, 27, 0.6),
+    inset 0 -138.273px 81px -56.455px rgba(219, 67, 0, 0.6);
+}
+
+.grade {
+  position: absolute;
+  display: block;
+  max-width: none;
+  mix-blend-mode: overlay;
+}
+
+.antes,
+.valor,
+.cartaoPill,
+.legenda {
+  position: absolute;
+  margin: 0;
+  line-height: 1.3;
+  color: #fff;
+  text-box: trim-both cap alphabetic;
+}
+
+.antes {
+  left: 36px;
+  top: 49.09px;
+  font-size: 19.636px;
+  white-space: nowrap;
+}
+
+.valor {
+  left: 36px;
+  top: 71.18px;
+  font-size: 65.455px;
+  font-weight: 800;
+  color: var(--color-orange);
+  white-space: nowrap;
+}
+
+.cartaoPill {
+  left: 36px;
+  top: 125.18px;
+  padding: 8.182px;
+  border-radius: 4.909px;
+  background: rgba(255, 170, 135, 0.2);
+  font-size: 19.636px;
+  white-space: nowrap;
+}
+
+.legenda {
+  left: 44px;
+  top: 185px;
+  width: 181px;
+  font-size: 19.636px;
 }

@@ -76,18 +76,16 @@
   filter: drop-shadow(0 0 18px rgba(255, 97, 27, 0.45));
 }
 
-/* balão: vidro escuro com borda laranja e setinha apontando para o logo */
+/* balão laranja (chama atenção sobre o fundo escuro) com setinha apontando para o logo;
+   texto azul-escuro: branco sobre o laranja fica com pouco contraste */
 .balao {
   position: absolute;
   left: 50%;
   bottom: calc(100% + 22px);
   width: 380px;
   padding: 18px 22px;
-  border: 1px solid rgba(255, 97, 27, 0.6);
   border-radius: 12px;
-  background: rgba(0, 24, 40, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--color-orange);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
   opacity: 0;
   transform: translate(-50%, 10px);
@@ -103,9 +101,7 @@
   width: 14px;
   height: 14px;
   margin: -7px 0 0 -7px;
-  border-right: 1px solid rgba(255, 97, 27, 0.6);
-  border-bottom: 1px solid rgba(255, 97, 27, 0.6);
-  background: rgb(0, 24, 40);
+  background: var(--color-orange);
   transform: rotate(45deg);
 }
 
@@ -120,14 +116,15 @@
   font-weight: 700;
   line-height: 1.2;
   text-transform: uppercase;
-  color: var(--color-orange);
+  color: var(--color-navy-800);
 }
 
 .balaoTexto {
   margin: 0;
   font-size: 17px;
+  font-weight: 500;
   line-height: 1.35;
-  color: #fff;
+  color: var(--color-navy-800);
 }
 
 .count {

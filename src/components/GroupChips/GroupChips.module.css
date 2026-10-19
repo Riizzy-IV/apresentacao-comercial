@@ -35,3 +35,12 @@
   background: var(--color-orange);
   border-color: var(--color-orange);
 }
+
+/* tela atual: mesma marcação das abas dos cases */
+.ativo,
+.ativo:hover {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+  color: var(--color-navy-800);
+  cursor: default;
+}

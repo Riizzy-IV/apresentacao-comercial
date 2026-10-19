@@ -3,6 +3,9 @@
 //   (`intro: true` = tela de abertura, que não aparece no menu lateral;
 //    `steps` = passos extras da mesma tela: entram na sequência das setas, mas a tela
 //    anima a mudança no lugar, sem a transição de fade, e o item do menu continua ativo).
+//   `menu` = rótulos do menu de passos no canto superior direito (um por rota: `route`, depois
+//   cada `steps`), desenhado pelo layout; as telas são componentes separados e cada uma traz o
+//   próprio fundo, então a troca entre esses passos mantém o fade.
 //   `groups` = menu lateral com vários grupos recolhíveis (o título do menu é o grupo atual);
 //   nesse caso `children` é montado a partir dos grupos (`logo` no grupo troca o título pela logo).
 // - SLIDES: sequência linear usada pelas setas anterior/próximo.
@@ -52,18 +55,23 @@ const FORMULA_GROUPS = [
     label: 'Comercial',
     logo: '/img/formula/logo-sidebar.svg',
     items: [
-      { route: '/comercial',                      label: 'A importância' },
-      { route: '/comercial/frentes-da-venda',     label: 'Frentes da venda' },
-      { route: '/comercial/estrutura-ideal',      label: 'Estrutura ideal' },
-      { route: '/comercial/o-maior-desafio',      label: 'O maior desafio' },
-      { route: '/comercial/assessoria-comercial', label: 'Assessoria comercial' },
-      { route: '/comercial/entregaveis',          label: 'Entregáveis' },
-      { route: '/comercial/cliente-oculto',       label: 'Cliente oculto' },
-      { route: '/comercial/cases',                label: 'Cases' },
-      { route: '/comercial/operacao-pre-vendas',  label: 'Operação pré-vendas' },
-      { route: '/comercial/onde-agiriamos',       label: 'Onde agiríamos' },
-      { route: '/comercial/roadmap',              label: 'Roadmap' },
-      { route: '/encerramento',                   label: 'Encerramento', intro: true }, // slide final, tela cheia, fora do menu
+      { route: '/comercial', label: 'Introdução',
+        steps: ['/comercial/frentes-da-venda', '/comercial/estrutura-ideal', '/comercial/o-maior-desafio'],
+        menu: ['A importância', 'Frentes da venda', 'Estrutura ideal', 'O maior desafio'] },
+      { route: '/comercial/assessoria-comercial', label: 'Assessoria comercial',
+        steps: ['/comercial/entregaveis', '/comercial/cliente-oculto', '/comercial/cases'],
+        menu: ['Introdução', 'Entregáveis', 'Cliente oculto', 'Cases'] },
+      { route: '/comercial/operacao-pre-vendas', label: 'Operação pré-vendas',
+        steps: ['/comercial/onde-agiriamos'],
+        menu: ['Operação pré-vendas', 'Onde agiríamos'] },
+    ],
+  },
+  {
+    label: 'Roadmap',
+    logo: '/img/formula/logo-sidebar.svg',
+    items: [
+      { route: '/roadmap',      label: 'Roadmap' },
+      { route: '/encerramento', label: 'Encerramento', intro: true }, // slide final, tela cheia, fora do menu
     ],
   },
 ];
@@ -102,7 +110,7 @@ export const SECTIONS = [
       ...FORMULA_GROUPS[0].items,                                   // Objetivo: missão … Iceberg Balzani
       { route: '/formula', label: 'Fórmula Vértice', intro: true,   // depois: abertura com a logo
         steps: ['/formula/pilares'] },                             // → 01 Estratégia, 02 Marketing, 03 Comercial
-      ...FORMULA_GROUPS.slice(1).flatMap(g => g.items),             // Estratégia, Marketing, Comercial
+      ...FORMULA_GROUPS.slice(1).flatMap(g => g.items),             // Estratégia, Marketing, Comercial, Roadmap
     ],
   },
 ];

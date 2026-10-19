@@ -108,8 +108,12 @@ export default function App() {
             <Route path="cases" element={<CasesComercial />} />
             <Route path="operacao-pre-vendas" element={<OperacaoPreVendas />} />
             <Route path="onde-agiriamos" element={<OndeAgiriamos />} />
-            <Route path="roadmap" element={<RoadmapProjeto />} />
             <Route path="*" element={<EmBreve embedded />} />
+          </Route>
+
+          {/* grupo próprio no menu lateral (fora de /comercial para não contar como tela do Comercial) */}
+          <Route path="/roadmap" element={<SectionLayout route="/formula" />}>
+            <Route index element={<RoadmapProjeto />} />
           </Route>
 
           {/* slide final em tela cheia, sem menu lateral */}

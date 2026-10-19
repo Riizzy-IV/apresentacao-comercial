@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import FormulaBackground from '../../../components/FormulaBackground/FormulaBackground';
 import styles from './EstruturaIdeal.module.css';
 
-/** Comercial · Estrutura ideal (Figma "Tela 33"): estrutura comercial para um lançamento (house interna). */
+/** Comercial · Estrutura ideal (Figma "Tela 33"): estrutura comercial para um lançamento (SDR + corretor). */
 export default function EstruturaIdeal() {
   const rootRef = useRef(null);
 
@@ -38,8 +38,7 @@ export default function EstruturaIdeal() {
       <img src="/img/comercial/faixa-degrade.png" alt="" width="598" height="19" className={styles.faixa} data-anim="faixa" />
 
       <div className={styles.house} data-anim="house">
-        <p className={styles.houseTitulo}>House Interna:</p>
-        <p className={styles.houseTexto}>formada por um SDR + Corretores</p>
+        <p className={styles.houseTitulo}>SDR + Corretor</p>
       </div>
     </div>
   );

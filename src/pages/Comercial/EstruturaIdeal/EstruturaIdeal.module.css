@@ -62,21 +62,11 @@
   white-space: nowrap;
 }
 
-.houseTitulo,
-.houseTexto {
-  margin: 0;
-  line-height: 1.1;
-  color: #fff;
-}
-
 .houseTitulo {
+  margin: 0;
   font-size: 32px;
   font-weight: 700;
+  line-height: 1.1;
   color: var(--color-orange);
-  text-box: trim-start cap alphabetic;
-}
-
-.houseTexto {
-  font-size: 24px;
-  text-box: trim-end cap alphabetic;
+  text-box: trim-both cap alphabetic;
 }

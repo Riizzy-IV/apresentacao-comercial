@@ -68,7 +68,7 @@ export default function Atuacao() {
 
       {/* etapas da estratégia */}
       <div className={styles.etapas}>
-        <h2 className={styles.title} data-anim="title">Etapas da estratégia</h2>
+        <h2 className={styles.title} data-anim="title">Áreas de atuação</h2>
         <ul className={styles.list}>
           {ETAPAS.map(e => (
             <li key={e.icon} className={styles.etapa} data-anim="etapa">

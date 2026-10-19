@@ -16,8 +16,9 @@ export function TransitionProvider({ children, overlayColor = '#021c2d' }) {
     if (busyRef.current) return;
 
     // passos da mesma tela: troca direto, a própria tela anima a mudança
+    // (menos itens com `menu`: cada passo é uma tela separada, com o próprio fundo → mantém o fade)
     const from = findItem(pathname);
-    if (from && from === findItem(route)) {
+    if (from && from === findItem(route) && !from.menu) {
       navigate(route);
       return;
     }

@@ -9,7 +9,7 @@ const LOGOS = [
   { src: '/img/logos/eco-njr-branco.png', alt: 'Ecossistema Neymar Jr.', left: 485.8, top: 444.3, width: 280, height: 70.4,
     sobre: 'Complexo esportivo e de lazer em Porto Belo (SC), com hotel, quadras e o espaço NJ Experience, dentro de um bairro planejado.' },
   { src: '/img/parceiros/inc.png', alt: 'INC Empreendimentos', left: 969, top: 438, width: 214, height: 89,
-    sobre: 'Construtora e incorporadora de São José do Rio Preto (SP), à frente de lançamentos verticais como o Unique Palestra.' },
+    sobre: 'A INC Empreendimentos é uma construtora e incorporadora brasileira fundada em 2008 na cidade de Juiz de Fora, Minas Gerais. Em 2018, a empresa foi listada na Bolsa de Valores (B3), sob o código de negociação INNC3.' },
   { src: '/img/parceiros/dialogo.png', alt: 'Diálogo Engenharia', left: 1374.29, top: 432, width: 303, height: 96,
     sobre: 'Incorporadora paulistana fundada em 1987, com mais de 184 empreendimentos lançados, referência na Zona Leste de São Paulo.' },
   { src: '/img/parceiros/porte.png', alt: 'Porte Engenharia e Urbanismo', left: 519, top: 635, width: 236, height: 118,

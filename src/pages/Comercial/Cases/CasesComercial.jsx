@@ -88,8 +88,7 @@ const CASES = [
     nome: ['Incorp', 'construtora'], cidade: 'Ilhéus - Bahia', posicoes: true,
     desafio: <>Os próprios corretores atendiam os leads, sem um SDR dedicado.<br />O empreendimento registrava, em média, apenas 3 visitas presenciais por mês.</>,
     atuacao: { largura: 560, texto: 'Orientamos a contratação de um SDR e treinamos o profissional para assumir o atendimento dos leads e trabalhar o agendamento de visitas.' },
-    // no Figma falta uma palavra entre "já no" e "de atuação do SDR"
-    resultado: <>A média mensal passou para {laranja('15 visitas realizadas')}, com {laranja('10 visitas')} já no de atuação do SDR.</>,
+    resultado: <>A média mensal passou para {laranja('15 visitas realizadas')}, com {laranja('10 visitas')} já no primeiro mês de atuação do SDR.</>,
     cartoes: [
       { pos: at(1269, 223), valor: '5x mais', pill: { texto: 'visitas presenciais', w: 180, icone: 205.36 } },
       { pos: at(1473, 508), antes: 'de 3 para', valor: '15 visitas', pill: { texto: 'realizadas por mês', w: 187.364, icone: 214.37 }, desfoque: 29.05 },

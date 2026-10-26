@@ -32,6 +32,16 @@
       "target": "nsis",
       "icon": "build/icon.png"
     },
+    "mac": {
+      "target": [{ "target": "dmg", "arch": ["universal"] }],
+      "icon": "build/icon.png",
+      "category": "public.app-category.business",
+      "identity": null,
+      "artifactName": "Apresentacao-Balzani-${version}-mac.${ext}"
+    },
+    "dmg": {
+      "title": "Apresentação Balzani"
+    },
     "nsis": {
       "oneClick": true,
       "perMachine": false,

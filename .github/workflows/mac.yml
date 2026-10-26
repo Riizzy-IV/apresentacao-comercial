@@ -1,0 +1,42 @@
+# Gera o instalador de Mac (.dmg, Apple Silicon + Intel) e anexa à Release da versão do package.json.
+# Roda sozinho quando uma Release é publicada (npm run release) e pode ser rodado à mão em Actions.
+# Sem assinatura da Apple: o app não se atualiza sozinho no Mac, por isso só o .dmg é enviado
+# (sem latest-mac.yml, o app no Mac não oferece atualização que falharia).
+name: Instalador Mac
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  dmg:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name || github.ref }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npx vite build
+
+      # pasta de saída local (a do package.json usa uma variável que só existe no Windows)
+      - run: npx electron-builder --mac --publish never -c.directories.output=release-mac
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: false
+
+      - name: Anexa o .dmg à Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSAO=$(node -p "require('./package.json').version")
+          gh release upload "v$VERSAO" release-mac/*.dmg --clobber

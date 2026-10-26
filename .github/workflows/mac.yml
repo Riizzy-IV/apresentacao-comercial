@@ -1,9 +1,12 @@
 # Gera o instalador de Mac (.dmg, Apple Silicon + Intel) e anexa à Release da versão do package.json.
 # Roda sozinho quando uma Release é publicada (npm run release) e pode ser rodado à mão em Actions.
 # Sem conta Apple Developer: assinatura ad-hoc (identity "-" no package.json). Sem nenhuma assinatura,
-# a junção Intel + Apple Silicon invalida as assinaturas do Electron e o app fecha ao abrir (SIGTRAP).
+# a junção Intel + Apple Silicon invalida as assinaturas do Electron.
 # O app não se atualiza sozinho no Mac, por isso só o .dmg é enviado
 # (sem latest-mac.yml, o app no Mac não oferece atualização que falharia).
+#
+# Nome do app no Mac sem acento ("Apresentacao Balzani"): com "Apresentação", o app fechava ao abrir
+# (SIGTRAP). O passo "Diagnóstico" gera e testa também a versão com acento, só para registro no log.
 name: Instalador Mac
 
 on:
@@ -13,6 +16,9 @@ on:
 
 permissions:
   contents: write
+
+env:
+  CSC_IDENTITY_AUTO_DISCOVERY: false
 
 jobs:
   dmg:
@@ -31,30 +37,46 @@ jobs:
 
       - run: npx vite build
 
-      # pasta de saída local (a do package.json usa uma variável que só existe no Windows)
-      - run: npx electron-builder --mac --publish never -c.directories.output=release-mac
-        env:
-          CSC_IDENTITY_AUTO_DISCOVERY: false
-
-      # confere a assinatura e abre o app nas duas arquiteturas (Intel via Rosetta): se ele fechar
-      # sozinho em 20 s, o fluxo falha e o .dmg não é enviado
-      - name: Testa o app
+      # script de teste: abre o app (nas arquiteturas pedidas) e falha se ele fechar sozinho em 20 s
+      - name: Prepara o teste
         run: |
-          APP=$(ls -d release-mac/mac-universal/*.app)
-          codesign --verify --deep --strict --verbose=2 "$APP"
+          cat > testa-app.sh <<'EOF'
+          set -u
+          APP="$1"; shift
+          codesign --verify --deep --strict "$APP" && echo "assinatura ok"
           BIN="$APP/Contents/MacOS/$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$APP/Contents/Info.plist")"
-          softwareupdate --install-rosetta --agree-to-license >/dev/null 2>&1 || true
-          for ARQ in arm64 x86_64; do
-            arch -$ARQ "$BIN" > "app-$ARQ.log" 2>&1 &
+          for ARQ in "$@"; do
+            ELECTRON_ENABLE_LOGGING=1 arch -$ARQ "$BIN" --enable-logging=stderr --v=0 > "log-$ARQ.txt" 2>&1 &
             PID=$!
             sleep 20
             if kill -0 $PID 2>/dev/null; then
               echo "$ARQ: abriu e continua aberto"
               kill $PID; wait $PID 2>/dev/null || true
             else
-              wait $PID; echo "$ARQ: o app fechou sozinho (código $?)"; cat "app-$ARQ.log"; exit 1
+              wait $PID; COD=$?
+              echo "$ARQ: o app fechou sozinho (código $COD). Log do app:"
+              tail -n 60 "log-$ARQ.txt"
+              echo "--- relatório de falha do macOS:"
+              ls -t ~/Library/Logs/DiagnosticReports/*.ips 2>/dev/null | head -1 | xargs -I{} head -c 6000 {}
+              exit 1
             fi
           done
+          EOF
+          softwareupdate --install-rosetta --agree-to-license >/dev/null 2>&1 || true
+
+      - name: Diagnóstico (nome com acento)
+        continue-on-error: true
+        run: |
+          npx electron-builder --mac dir --arm64 --publish never -c.directories.output=diag
+          bash testa-app.sh "$(ls -d diag/mac-arm64/*.app)" arm64
+
+      - name: Gera o .dmg
+        run: |
+          npx electron-builder --mac --publish never -c.directories.output=release-mac \
+            -c.productName="Apresentacao Balzani"
+
+      - name: Testa o app
+        run: bash testa-app.sh "$(ls -d release-mac/mac-universal/*.app)" arm64 x86_64
 
       - name: Anexa o .dmg à Release
         env:

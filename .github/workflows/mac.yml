@@ -42,7 +42,7 @@ jobs:
         run: |
           APP=$(ls -d release-mac/mac-universal/*.app)
           codesign --verify --deep --strict --verbose=2 "$APP"
-          BIN="$APP/Contents/MacOS/$(defaults read "$APP/Contents/Info.plist" CFBundleExecutable)"
+          BIN="$APP/Contents/MacOS/$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$APP/Contents/Info.plist")"
           softwareupdate --install-rosetta --agree-to-license >/dev/null 2>&1 || true
           for ARQ in arm64 x86_64; do
             arch -$ARQ "$BIN" > "app-$ARQ.log" 2>&1 &

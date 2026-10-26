@@ -1,6 +1,8 @@
 # Gera o instalador de Mac (.dmg, Apple Silicon + Intel) e anexa à Release da versão do package.json.
 # Roda sozinho quando uma Release é publicada (npm run release) e pode ser rodado à mão em Actions.
-# Sem assinatura da Apple: o app não se atualiza sozinho no Mac, por isso só o .dmg é enviado
+# Sem conta Apple Developer: assinatura ad-hoc (identity "-" no package.json). Sem nenhuma assinatura,
+# a junção Intel + Apple Silicon invalida as assinaturas do Electron e o app fecha ao abrir (SIGTRAP).
+# O app não se atualiza sozinho no Mac, por isso só o .dmg é enviado
 # (sem latest-mac.yml, o app no Mac não oferece atualização que falharia).
 name: Instalador Mac
 
@@ -33,6 +35,26 @@ jobs:
       - run: npx electron-builder --mac --publish never -c.directories.output=release-mac
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: false
+
+      # confere a assinatura e abre o app nas duas arquiteturas (Intel via Rosetta): se ele fechar
+      # sozinho em 20 s, o fluxo falha e o .dmg não é enviado
+      - name: Testa o app
+        run: |
+          APP=$(ls -d release-mac/mac-universal/*.app)
+          codesign --verify --deep --strict --verbose=2 "$APP"
+          BIN="$APP/Contents/MacOS/$(defaults read "$APP/Contents/Info.plist" CFBundleExecutable)"
+          softwareupdate --install-rosetta --agree-to-license >/dev/null 2>&1 || true
+          for ARQ in arm64 x86_64; do
+            arch -$ARQ "$BIN" > "app-$ARQ.log" 2>&1 &
+            PID=$!
+            sleep 20
+            if kill -0 $PID 2>/dev/null; then
+              echo "$ARQ: abriu e continua aberto"
+              kill $PID; wait $PID 2>/dev/null || true
+            else
+              wait $PID; echo "$ARQ: o app fechou sozinho (código $?)"; cat "app-$ARQ.log"; exit 1
+            fi
+          done
 
       - name: Anexa o .dmg à Release
         env:

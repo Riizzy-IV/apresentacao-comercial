@@ -36,7 +36,9 @@
       "target": [{ "target": "dmg", "arch": ["universal"] }],
       "icon": "build/icon.png",
       "category": "public.app-category.business",
-      "identity": null,
+      "identity": "-",
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false,
       "artifactName": "Apresentacao-Balzani-${version}-mac.${ext}"
     },
     "dmg": {

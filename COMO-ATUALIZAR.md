@@ -45,6 +45,17 @@ vendedor. Como o app não tem assinatura digital, o Windows pode mostrar "O Wind
 computador": clique em **Mais informações → Executar assim mesmo**. Depois disso, as
 atualizações chegam sozinhas.
 
+## Mac
+
+O `npm run release` publica a Release e o GitHub Actions gera sozinho o
+`Apresentacao-Balzani-x.y.z-mac.dmg` (Apple Silicon + Intel) e o anexa à mesma Release
+(`.github/workflows/mac.yml`; também dá para rodar à mão em Actions › Instalador Mac › Run workflow).
+
+- No Mac o app se chama "Apresentacao Balzani", sem acento: com "Apresentação" ele fecha ao abrir.
+- Sem conta Apple Developer, o app não é reconhecido pela Apple: na primeira vez, clique com o botão
+  direito no app › **Abrir** › **Abrir** (ou Ajustes › Privacidade e Segurança › **Abrir Mesmo Assim**).
+- No Mac não há atualização automática: a cada versão, baixe o `.dmg` novo da Release e reinstale.
+
 ## No app
 
 - Abre em tela cheia. **F11** alterna a tela cheia; **Esc** sai dela.

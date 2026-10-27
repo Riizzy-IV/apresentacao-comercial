@@ -1,23 +1,26 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import VivaClub from './projetos/VivaClub';
-import BelaVista from './projetos/BelaVista';
-import OliveGarden from './projetos/OliveGarden';
-import SolarDoCais from './projetos/SolarDoCais';
-import Unica from './projetos/Unica';
 import styles from './Projetos.module.css';
 
-// projetos de conceito (abas). `Conteudo: null` = ainda sem layout no Figma
+// case de conceito: o key visual do projeto ocupando o painel
+const kv = nome => () => (
+  <img src={`/img/marketing/conceito-cases/${nome}.webp`} alt="" className={styles.kv} draggable={false} />
+);
+
+// projetos de conceito (abas). `Conteudo: null` = ainda sem material ("Em breve")
 const PROJETOS = [
-  { nome: 'Unica',         Conteudo: Unica },
-  { nome: 'Bela Vista',    Conteudo: BelaVista },
-  { nome: 'Olive Garden',  Conteudo: OliveGarden },
-  { nome: 'Solar do Cais', Conteudo: SolarDoCais },
-  { nome: 'VivaClub', cliente: 'Luiz Targa Engenharia', Conteudo: VivaClub },
+  { nome: 'Areias do Sul',   Conteudo: kv('areias-do-sul') },
+  { nome: 'Bioma',           Conteudo: kv('bioma') },
+  { nome: 'Chamoun Riviera', cliente: 'Chamoun Incorporadora', Conteudo: kv('chamoun-riviera') },
+  { nome: 'Léman View',      Conteudo: kv('leman-view') },
+  { nome: 'Vacaria',         Conteudo: kv('vacaria') },
+  { nome: 'Zurique',         Conteudo: kv('zurique') },
+  { nome: 'Like Premium',    Conteudo: kv('like-premium') },
 ];
+
 /**
  * Marketing · Conceito, passo 2 (Figma "Tela 11"): abas com os projetos e, para cada um,
- * o brandbook num painel branco com rolagem. As setas laterais trocam de projeto.
+ * o key visual no painel. As setas laterais trocam de projeto.
  * Também usado no Enxoval e na Performance (`projetos` = outra lista; `classes` = ajustes de
  * estilo por tela, somados às classes padrão: `abas`, `painel`, `nome`, `cliente`).
  * Cada item pode ter `aba` = texto do botão, quando for diferente do nome mostrado no título,

@@ -62,7 +62,7 @@
   border-radius: 0;
 }
 
-/* botão ampliar/reduzir no canto superior esquerdo (o direito tem o ícone do player do Drive) */
+/* botão ampliar/reduzir no canto superior esquerdo */
 .videoTamanho {
   position: absolute;
   top: 16px;
@@ -87,36 +87,6 @@
 .videoTamanho:hover {
   background: var(--color-orange);
   border-color: var(--color-orange);
-}
-
-/* sem internet: capa do vídeo com aviso por cima */
-.videoOffline {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  background: #00243a;
-}
-
-.videoOffline img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-  filter: brightness(0.45);
-}
-
-.videoOffline p {
-  position: absolute;
-  inset: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  font-weight: 700;
-  color: #fff;
 }
 
 /* vídeo ocupando o painel, com fundo preto nas sobras (painel 1479×761, vídeo 16:9) */

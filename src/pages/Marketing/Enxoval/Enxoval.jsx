@@ -50,17 +50,9 @@ const site = (url, reserva) => () => <SiteAoVivo url={url} reserva={reserva} />;
  * Vídeo dentro do painel (fica no app, roda offline), com o botão próprio de ampliar/reduzir no canto:
  * a tela cheia é do quadro inteiro (vídeo + botão), então o botão de reduzir continua visível.
  */
-function VideoPainel({ src, drive, capa }) {
+function VideoPainel({ src, capa }) {
   const boxRef = useRef(null);
   const [cheia, setCheia] = useState(false);
-  const [online, setOnline] = useState(() => navigator.onLine);
-
-  useEffect(() => {
-    const on = () => setOnline(true), off = () => setOnline(false);
-    window.addEventListener('online', on);
-    window.addEventListener('offline', off);
-    return () => { window.removeEventListener('online', on); window.removeEventListener('offline', off); };
-  }, []);
 
   useEffect(() => {
     const mudou = () => setCheia(document.fullscreenElement === boxRef.current);
@@ -75,21 +67,8 @@ function VideoPainel({ src, drive, capa }) {
 
   return (
     <div ref={boxRef} className={styles.videoBox}>
-      {drive ? (
-        // vídeo do Google Drive (precisa de internet); sem conexão, mostra a capa com um aviso
-        online
-          ? <iframe src={`https://drive.google.com/file/d/${drive}/preview`} title="Vídeo conceito"
-              allow="autoplay; fullscreen" className={styles.video} />
-          : (
-            <div className={styles.videoOffline}>
-              {capa && <img src={capa} alt="" draggable={false} />}
-              <p>Conecte-se à internet para assistir ao vídeo</p>
-            </div>
-          )
-      ) : (
-        <video src={src} poster={capa} controls controlsList="nofullscreen" disablePictureInPicture
-          playsInline preload="metadata" className={styles.video} onDoubleClick={alternar} />
-      )}
+      <video src={src} poster={capa} controls controlsList="nofullscreen" disablePictureInPicture
+        playsInline preload="metadata" className={styles.video} onDoubleClick={alternar} />
       <button className={styles.videoTamanho} onClick={alternar} aria-label={cheia ? 'Reduzir vídeo' : 'Ampliar vídeo'}>
         {cheia ? (
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -106,8 +85,10 @@ function VideoPainel({ src, drive, capa }) {
   );
 }
 
-const video = (src, capa) => () => <VideoPainel src={src} capa={capa} />;
-const videoDrive = (id, capa) => () => <VideoPainel drive={id} capa={capa} />;
+// vídeos conceito: arquivos do app (public/videos/enxoval, 1080p a ~5 Mbps), tocam na hora e sem internet
+const video = (nome, capa = `/videos/enxoval/${nome}-capa.jpg`) => () => (
+  <VideoPainel src={`/videos/enxoval/${nome}.mp4`} capa={capa} />
+);
 
 // book digital: páginas do PDF (convertidas em imagem com 1800 px de largura) uma embaixo da outra,
 // rolando no painel. `alturas` = altura de cada página, ou um número só quando todas são iguais.
@@ -147,15 +128,12 @@ const PROJETOS = [
     { nome: 'Léman View',    Conteudo: site('https://lemanview.com.br/') },
     { nome: 'Nex Monaco',    Conteudo: site('https://nex-monaco.vercel.app/monaco') },
   ] },
-  // vídeos tocados direto do Google Drive (arquivos grandes demais para ir no app)
   { aba: 'Vídeo Conceito', opcoes: [
     { nome: 'Porto Belo Lagos', cliente: 'JTA Empreendimentos',
-      Conteudo: videoDrive('1JEnotsfn-7dYl5HoP_LDOZI2-yM4Sp8S', '/img/marketing/enxoval/porto-belo-lagos-capa.jpg') },
-    { nome: 'Chamoun Riviera', cliente: 'Chamoun Incorporadora',
-      Conteudo: videoDrive('11Y_Upr1Y0O3HbtnaSQ-Y12HLQ1qtgGkG') },
-    { nome: 'Vale das Montanhas', cliente: 'Edifica Real',
-      Conteudo: videoDrive('1bqkWfgpZwemlsLRwzQ35hUVt2rWtnjI2') },
-    { nome: 'Cipasa Urbanismo', Conteudo: videoDrive('1ExqKAoQwB7XysGX5bhk6apzm6zc264NH') },
+      Conteudo: video('porto-belo-lagos', '/img/marketing/enxoval/porto-belo-lagos-capa.jpg') },
+    { nome: 'Chamoun Riviera', cliente: 'Chamoun Incorporadora', Conteudo: video('chamoun-riviera') },
+    { nome: 'Vale das Montanhas', cliente: 'Edifica Real', Conteudo: video('vale-das-montanhas') },
+    { nome: 'Cipasa Urbanismo', Conteudo: video('cipasa') },
   ] },
   { aba: 'Book', opcoes: [
     { nome: 'Areias do Sul',   Conteudo: book('book', 46, 1200) },
@@ -171,10 +149,7 @@ const PROJETOS = [
 ];
 
 // carregados escondidos já na introdução, para o passo "Cases" abrir com o cache quente
-const PREAQUECER = [
-  'https://chamounriviera.com.br/',
-  'https://drive.google.com/file/d/1JEnotsfn-7dYl5HoP_LDOZI2-yM4Sp8S/preview',
-];
+const PREAQUECER = ['https://chamounriviera.com.br/'];
 
 /** Passo 1 (Figma "Tela 51"): texto + quatro pilares, foto à direita. */
 const Intro = () => (

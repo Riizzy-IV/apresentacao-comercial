@@ -4,7 +4,7 @@
   "description": "Apresentação comercial Balzani",
   "author": "Balzani",
   "private": true,
-  "version": "1.0.5",
+  "version": "1.0.6",
   "type": "module",
   "main": "electron/main.cjs",
   "scripts": {
@@ -33,7 +33,14 @@
       "icon": "build/icon.png"
     },
     "mac": {
-      "target": [{ "target": "dmg", "arch": ["universal"] }],
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        }
+      ],
       "icon": "build/icon.png",
       "category": "public.app-category.business",
       "identity": "-",
